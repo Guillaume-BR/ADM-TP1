@@ -1,0 +1,44 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx} % Required for inserting images
+
+\title{TP1-ADM}
+\author{Guillaume Bernard-Reymond et Lorenzo Gaggini}
+\date{October 2023}
+
+\begin{document}
+\newcommand{\norme}[1]{\left\| #1\right\|}
+
+\maketitle
+
+\section{Partie 1}
+Dans cette partie, nous désignerons par $(x_{i})$ où $i\in\{1;...;21\}$ les individus et $(x^{j})$ où $j\in\{1;...;32\}$ les variables, qu'elles soient quantitatives ou bien qualitatives. Enfin nous noterons $(z^{j})$ où $j\in\{4;...;32\}$ les variables quantitatives centrées-réduites.  
+\begin{enumerate}
+    \item Dans cette question nous placerons dans le cas général où $i\in\{1;...;n\}$ et $j\in\{1;...;p\}$
+    \begin{itemize}
+        \item[$\bullet$] On considère $(w_{i})_{i\in\{1...n\}}$ une suite de poids telle que $\displaystyle\sum_{i=1}^{n}=1$ et soit $j\in\{1;...;p\}$. On peut alors écrire : 
+        \begin{align*}
+            \sum_{i=1}^{n} w_i z_i^j = & \sum_{i=1}^{n} w_i \left(\dfrac{x_i^j-\overline{x^j}}{\sigma_{x^j}}\right)\\
+            =& \dfrac{1}{\sigma_{x^j}}\sum_{i=1}^{n}\left(w_i x_{i}^j-w_i \overline{x^j}\right) \\
+            =&\dfrac{1}{\sigma_{x^j}} \left(\overline{x^j}-\overline{x^j}\sum_{i=1}^{n} w_i\right)\\
+            =& 0
+        \end{align*}
+    Le barycentre du nuage est donc bien $0_{\mathbb{R}^{p}}$.
+
+    \item[$\bullet$] 
+    \begin{align*}
+       In_{O}\left(\{z_i;w_i\}_{i=1,...,n}\right) = & \sum_{i=1}^{n} w_i \norme{z_{i}}^2 \\
+       = & \sum_{i=1}^{n} w_i \left(\sum_{j=1}^p {z_i^j}^2\right)\\
+       =& \sum_{i=1}^{n} \left(\sum_{j=1}^p w_i {z_i^j}^2\right) \\
+       =& \sum_{j=1}^p \left( \sum_{i=1}^{n}w_i {z_i^j}^2\right)
+    \end{align*}
+    Or l'expression $\displaystyle \sum_{i=1}^{n}w_i {z_i^j}^2$ n'est rien d'autre que l'expression de la variance de notre variable quantitative centrée réduite qui vaut donc $1$. 
+
+    Ainsi : $In_{O}\left(\{z_i;w_i\}_{i=1,...,n}\right) = p$ c'est à dire le nombre de variables quantitatives.
+    \end{itemize}
+
+\item 
+\end{enumerate}
+
+\end{document}
