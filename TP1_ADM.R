@@ -1,4 +1,5 @@
-#Mean and standar-deviation of the 29 quantitative variable in wine;
+wine=read.csv('wine.csv')
+#Mean and standard-deviation of the 29 quantitative variable in wine;
 M = unname(colMeans(wine[4:32]))
 V = unname(sapply(wine[4:32],sd))
 print(V)

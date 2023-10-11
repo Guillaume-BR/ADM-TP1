@@ -2,6 +2,9 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{graphicx} % Required for inserting images
+\usepackage{listings}
+\usepackage{array}
+
 
 \title{TP1-ADM}
 \author{Guillaume Bernard-Reymond et Lorenzo Gaggini}
@@ -25,6 +28,13 @@ Dans cette partie, nous désignerons par $(x_{i})$ où $i\in\{1;...;21\}$ les in
             =& 0
         \end{align*}
     Le barycentre du nuage est donc bien $0_{\mathbb{R}^{p}}$.
+    
+    Informatiquement, nous avons utiliser les commandes suivantes : 
+\begin{lstlisting}[language=R]
+Barycentre=(colMeans(CR[4:32]))
+print(Barycentre)
+\end{lstlisting}    
+Les résultats obtenus étant de l'ordre de $10^{-16}$, on peut considérer qu'ils sont égaux à $0$.
 
     \item[$\bullet$] 
     \begin{align*}
@@ -36,9 +46,59 @@ Dans cette partie, nous désignerons par $(x_{i})$ où $i\in\{1;...;21\}$ les in
     Or l'expression $\displaystyle \sum_{i=1}^{n}w_i {z_i^j}^2$ n'est rien d'autre que l'expression de la variance de notre variable quantitative centrée réduite qui vaut donc $1$. 
 
     Ainsi : $In_{O}\left(\{z_i;w_i\}_{i=1,...,n}\right) = p$ c'est à dire le nombre de variables quantitatives.
+    
+    Informatiquement, nous avons utilisé les commandes :
+\begin{lstlisting}[language=R]  
+#variance 
+Variance=diag(var(CR[4:32]))
+print(Variance)
+
+#inertia
+Inertie=sum(Variance)
+print(Inertie)
+\end{lstlisting}
+
+Le résultat obtenu est 29 comme attendu.
     \end{itemize}
 
-\item 
+\item Pour chaque appellation, nous avons effectuer un tri afin d'obtenir pour chaque appellation un tableau des individus. A partir de là, nous avons calculé le poids, les barycentres et les normes euclidiennes carrées de ces trois barycentres. Voici le code utilisé où CR désigne le tableau dont les variables quantitatives sont centrées et réduites : 
+
+\begin{lstlisting}[language=R]
+"Q2"
+chinon=CR[CR$Label == 'Chinon',]
+saumur=CR[CR$Label == 'Saumur',]
+bourgueuil=CR[CR$Label == 'Bourgueuil',]
+
+#poids
+pchi=nrow(chinon)/nrow(CR)
+psau=nrow(saumur)/nrow(CR)
+pbou=nrow(bourgueuil)/nrow(CR)
+
+#barycentre
+mchi= unname(colMeans(chinon[4:32]))
+msau= unname(colMeans(saumur[4:32]))
+mbou= unname(colMeans(bourgueuil[4:32]))
+
+#carree des normes euclidiennes des barycentres
+nchi=sum(mchi^2)
+nsau=sum(msau^2)
+nbou=sum(mbou^2)
+\end{lstlisting}
+
+Voici les résultats obtenus : 
+
+% \usepackage{array} is required
+\begin{tabular}{|l|>{\centering\arraybackslash}p{3cm}|>{\centering\arraybackslash}p{3cm}|}
+\hline 
+ & Poids & Norme \\ 
+\hline 
+Chinon & 0,1905 & 5,1428 \\ 
+\hline 
+Saumur & 0,5338 & 2,0188 \\ 
+\hline 
+Bourgueuil & 0,2857 & 3,4319 \\ 
+\hline 
+\end{tabular} 
 \end{enumerate}
 
 \end{document}
