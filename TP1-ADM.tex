@@ -1,9 +1,12 @@
 \documentclass{article}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{dsfont}
 \usepackage{graphicx} % Required for inserting images
 \usepackage{listings}
 \usepackage{array}
+\usepackage[vmargin=2cm,hmargin=1cm]{geometry}
 
 
 \title{TP1-ADM}
@@ -99,6 +102,60 @@ Saumur & 0,5338 & 2,0188 \\
 Bourgueuil & 0,2857 & 3,4319 \\ 
 \hline 
 \end{tabular} 
+
+Pour chaque variable sensorielle, nous avons calculer le $R^2$. Nous avons donc obtenu $3$ vecteurs lignes de $29$ valeurs. Nous avons ensuite triés les valeurs et tracés les graphiques correspondant.
+
+Pour le Bourgueil :
+\begin{itemize}
+\item[$\bullet$] la moins liée : Spice.before.shaking
+\item[$\bullet$] la plus liée : Attack.intensity  
+\end{itemize}
+
+Pour le Chinon :
+\begin{itemize}
+\item[$\bullet$] les moins liées : Spice.before.shaking et Astringency 
+\item[$\bullet$] les plus liées par ordre croissant : Fruity , Aroma.intensity , Acidity   
+\end{itemize}
+
+Pour le Saumur :
+\begin{itemize}
+\item[$\bullet$] la moins liée : Surface.feeling 
+\item[$\bullet$] les plus liées par ordre croissant : Flower , Spice , Spice.before.shaking. 
+\end{itemize}
+
+A montrer : le $R^2$ de la partition est égal à la moyenne arithmétique des $R^2$ des variables.
+\end{enumerate}
+
+\section{Partie 2}
+
+\begin{enumerate}
+\item 
+	\begin{enumerate}
+	\item On considère le vecteur $\mathds{1}_n=\begin{pmatrix}
+	1 \\ 
+	\vdots \\ 
+	 \\ 
+	1
+	\end{pmatrix} \in\mathbb{R}^{n}$.\\
+	 On rappelle que $\mathds{1}_n\in \text{Vect}\left(y^1;...;y^p\right)=\langle Y \rangle$ car $\forall i\in\{1;...;n\},\, \sum_{j=1}^p \mathds{1}_{Y_i=j}=1$ donc $\mathds{1}_n\in \langle Y \rangle$.
+Soit $j\in\{1;...;p\}$ :
+	\begin{align*}
+	\Pi_{\langle Y \rangle} x^j =& \Pi_{\langle\mathds{1}_n\rangle}x^j +\Pi_{\langle \mathds{1}_n^{\perp} \cap Y \rangle} x^j  \text{ car } \langle Y \rangle = \langle \mathds{1}_n \rangle \overset{\perp}{\oplus}\langle \mathds{1}_n^{\perp} \cap Y \rangle \\
+	  =& 0 + \Pi_{\langle Y^c \rangle} x^j \\
+	  =& \Pi_{\langle Y^c \rangle} x^j
+	\end{align*}
+ $\Pi_{\langle\mathds{1}_n\rangle}x^j=0$ car $x^j$ étant centré réduit, il appartient à $\mathds{1}_n^{\perp}$.\\
+ 
+	
+	$\norme{\Pi_Yx^j}^2_{W}$ représente la variance de la variable $x^j$ par rapport à l'appellation.
+	\item $\Pi_Y=Y\left(Y'WY\right)^{-1}Y'W$ est une matrice carrée de taille $21$ et de même pour $\Pi_{x^j}=x^{j}\left({x^{j}}'Wx^{j}\right)^{-1}{x^{j}}'W$
+	
+	\item $\text{tr}(R \Pi_Y)$ est le $R^2$ de la partition des vins en appellations.
+	
+	\item 
+	\end{enumerate}
+
+\item De la même façon, $\text{tr}(\Pi_{x^j}\Pi_{Z})$ est ... et $\text{tr}(R\Pi_{Z})$ est le $R^2$ de la partition des vins selon les types de sol.
 \end{enumerate}
 
 \end{document}
