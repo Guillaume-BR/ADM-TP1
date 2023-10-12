@@ -5,7 +5,7 @@ xtable(wine[1:4,1:5], type = "latex", file = "wine.tex",digits = 3,
 
 #Mean and standard-deviation of the 29 quantitative variable in wine;
 M = unname(colMeans(wine[4:32]))
-V = unname(sapply(wine[4:32],sd))*21/20 #variance corrigée ?? facteur (21/20) ?
+V = unname(sapply(wine[4:32],sd)) #variance corrigée ?? facteur (21/20) ?
 print(V)
 print(M)
 
@@ -13,17 +13,12 @@ print(M)
 CR=wine
 for (i in 1:29)
 {
-  CR[,3+i] <- (wine[,3+i]-M[i])/(V[i])
+  CR[,3+i] <- (wine[,3+i]-M[i])/(V[i]*sqrt(20/21))
 }
 #Check if variables ar indeed recuded and centered
 Barycentre=colMeans(CR[4:32])
-xtable(t(as.matrix(Barycentre[,1:5])), type = "latex", file = "barycentre.tex",digits = 3,
-       caption="extrait du tableau des barycentres")
-Variance=t(diag(var(CR[4:32])))
+Variance=t(diag(var(CR[4:32])*20/21))
 print(Variance)
-xtable(t(as.matrix(Variance[,1:5])), type = "latex", file = "barycentre.tex",digits = 3,
-       caption="extrait du tableau des variances")
-
 #inertia
 Inertie=sum(Variance)
 print(Inertie)
@@ -32,9 +27,6 @@ print(Inertie)
 
 "Q2"
 chinon=CR[CR$Label == 'Chinon',]
-xtable(chinon[1:3,1:5], type = "latex", file = "barycentre.tex",digits = 3,
-       caption="extrait du tableau de l'appelation Chinon")
-
 saumur=CR[CR$Label == 'Saumur',]
 bourgueuil=CR[CR$Label == 'Bourgueuil',]
 
@@ -56,19 +48,17 @@ nbou=sum(mbou^2)
 
 #Inertie externe
 Inex=pchi*nchi+psau*nsau+pbou*nbou
-#R2 pour le partionnement en appelation A CORRIGER
+
+#R2 pour le partitionnement en appellation A CORRIGER
 R=Inex/Inertie
 print(100*R)
 
 #R2 par variable
 RVariables=pchi*mchi^2+psau*msau^2+pbou*mbou^2
 print(RVariables)
-
-pchi*mchi[1]^2 + pbou*mbou[1]^2 + psau*msau[1]^2
-sum(1/29*RVariables)
+sum(RVariables*1/29)
 
 rchi=(sapply((chinon[4:32]),sd)^2)/sum(Variance) #pas bon ici
-rchibis=chinon[4:32]
 rbou=(sapply((bourgueuil[4:32]),sd)^2)/sum(Variance)
 rsau=(sapply((saumur[4:32]),sd)^2)/sum(Variance)
 trichi=rchi[order(unlist(rchi))]
