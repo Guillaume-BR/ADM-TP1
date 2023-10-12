@@ -18,6 +18,23 @@
 
 \maketitle
 
+Dans ce TP, nous avons à notre disposition un tableau contenant une liste de 21 vins dont on a mesuré différents paramètres. En voici un extrait : 
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{rlllrr}
+  \hline
+ & X & Label & Soil & Odor.Intensity.before.shaking & Aroma.quality.before.shaking \\ 
+  \hline
+1 & 2EL  & Saumur & Env1 & 3.074 & 3.000 \\ 
+  2 & 1CHA & Saumur & Env1 & 2.964 & 2.821 \\ 
+  3 & 1FON & Bourgueuil & Env1 & 2.857 & 2.929 \\ 
+  4 & 1VAU & Chinon & Env2 & 2.808 & 2.593 \\ 
+   \hline
+\end{tabular}
+\caption{Extrait du tableau} 
+\end{table} 
+
 \section{Partie 1}
 Dans cette partie, nous désignerons par $(x_{i})$ où $i\in\{1;...;21\}$ les individus et $(x^{j})$ où $j\in\{1;...;32\}$ les variables, qu'elles soient quantitatives ou bien qualitatives. Enfin nous noterons $(z^{j})$ où $j\in\{4;...;32\}$ les variables quantitatives centrées-réduites.  
 \begin{enumerate}
@@ -32,7 +49,20 @@ Dans cette partie, nous désignerons par $(x_{i})$ où $i\in\{1;...;21\}$ les in
         \end{align*}
     Le barycentre du nuage est donc bien $0_{\mathbb{R}^{p}}$.
     
-    Informatiquement, nous avons utiliser les commandes suivantes : 
+    Informatiquement, voici un extrait de ce que nous avons obtenu : 
+    
+    \begin{table}[ht]
+\centering
+\begin{tabular}{rrrrrr}
+  \hline
+ & Odor.Intensity.before.shaking & Aroma.quality.before.shaking & Fruity.before.shaking & Flower.before.shaking \\ 
+  \hline
+1 & -0.000 & 0.000 & -0.000 & 0.000 \\ 
+   \hline
+\end{tabular}
+\caption{extrait du tableau des barycentres} 
+\end{table}
+
 \begin{lstlisting}[language=R]
 Barycentre=(colMeans(CR[4:32]))
 print(Barycentre)
@@ -50,7 +80,20 @@ Les résultats obtenus étant de l'ordre de $10^{-16}$, on peut considérer qu'i
 
     Ainsi : $In_{O}\left(\{z_i;w_i\}_{i=1,...,n}\right) = p$ c'est à dire le nombre de variables quantitatives.
     
-    Informatiquement, nous avons utilisé les commandes :
+    Informatiquement, voici ce que nous avons obtenu : 
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrr}
+  \hline
+ & Odor.Intensity.before.shaking & Aroma.quality.before.shaking & Fruity.before.shaking & Flower.before.shaking \\ 
+  \hline
+1 & 1.000 & 1.000 & 1.000 & 1.000 \\ 
+   \hline
+\end{tabular}
+\caption{extrait du tableau des variances} 
+\end{table}    
+    
 \begin{lstlisting}[language=R]  
 #variance 
 Variance=diag(var(CR[4:32]))
@@ -65,6 +108,24 @@ Le résultat obtenu est 29 comme attendu.
     \end{itemize}
 
 \item Pour chaque appellation, nous avons effectuer un tri afin d'obtenir pour chaque appellation un tableau des individus. A partir de là, nous avons calculé le poids, les barycentres et les normes euclidiennes carrées de ces trois barycentres. Voici le code utilisé où CR désigne le tableau dont les variables quantitatives sont centrées et réduites : 
+
+Voici un extrait d'un des tableaux : 
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{rlllrr}
+  \hline
+ & X & Label & Soil & Odor.Intensity.before.shaking & Aroma.quality.before.shaking \\ 
+  \hline
+4 & 1VAU & Chinon & Env2 & -1.047 & -2.202 \\ 
+  9 & DOM1 & Chinon & Env1 & -0.878 & -1.122 \\ 
+  17 & 2BEA & Chinon & Reference & -0.260 & 0.648 \\ 
+   \hline
+\end{tabular}
+\caption{extrait du tableau de l'appelation Chinon} 
+\end{table}
+
+
 
 \begin{lstlisting}[language=R]
 "Q2"
@@ -123,7 +184,16 @@ Pour le Saumur :
 \item[$\bullet$] les plus liées par ordre croissant : Flower , Spice , Spice.before.shaking. 
 \end{itemize}
 
-A montrer : le $R^2$ de la partition est égal à la moyenne arithmétique des $R^2$ des variables.
+Montrons que le $R^2$ de la partition est égal à la moyenne arithmétique des $R^2$ des variables que l'on notera $M$. 
+\begin{align*}
+M=& \frac{1}{29} \sum_{j=1}^{29} \frac{\text{Variance externe de la variable } j }{\text{Variance totale de la variable} j} \\ 
+ =& \frac{1}{29} \sum_{j=1}^{29} \frac{\sum_{k=1}^3 W^k\left(\overline{x^j}^k\right)^2}{1} \\
+  =&\frac{1}{29} \sum_{k=1}^3  W^k \sum_{j=1}^{29} \left(\overline{x^j}^k\right)^2 \\
+   =& \frac{1}{29} \sum_{k=1}^3 W^k \norme{\overline{x}^k}^2\\
+ =& R^2_{\text{partition}}
+\end{align*}
+
+A faire informatiquement.
 \end{enumerate}
 
 \section{Partie 2}
