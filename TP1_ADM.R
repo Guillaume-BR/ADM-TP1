@@ -36,10 +36,9 @@ psau=nrow(saumur)/nrow(CR)
 pbou=nrow(bourgueuil)/nrow(CR)
 
 #barycentre des classes 
-mchi= unname(colMeans(chinon[4:32]))
-print(mchi)
-msau= unname(colMeans(saumur[4:32]))
-mbou= unname(colMeans(bourgueuil[4:32]))
+mchi= (colMeans(chinon[4:32]))
+msau= (colMeans(saumur[4:32]))
+mbou= (colMeans(bourgueuil[4:32]))
 
 #carrée des normes euclidiennes des barycentres
 nchi=sum(mchi^2)
@@ -48,15 +47,20 @@ nbou=sum(mbou^2)
 
 #Inertie externe
 Inex=pchi*nchi+psau*nsau+pbou*nbou
-
-#R2 pour le partitionnement en appellation A CORRIGER
+Inex
+#R2 pour le partitionement en appellation A CORRIGER
 R=Inex/Inertie
 print(100*R)
 
 #R2 par variable
-RVariables=pchi*mchi^2+psau*msau^2+pbou*mbou^2
-print(RVariables)
-sum(RVariables*1/29)
+rvar=pchi*mchi^2+psau*msau^2+pbou*mbou^2
+print(rvar)
+trirvar=rvar[order(unlist(rvar))]
+trirvar
+plot(trirvar,xaxt='n')
+axis(1,at=1:29,labels=FALSE,srt=90)
+text(0.5:28.5,rep(-0.05,2),labels=names(trirvar),srt = 90,xpd=NA,adj=c(1,1))
+sum(rvar*1/29)# c'est bon ici !!
 
 rchi=(sapply((chinon[4:32]),sd)^2)/sum(Variance) #pas bon ici
 rbou=(sapply((bourgueuil[4:32]),sd)^2)/sum(Variance)
@@ -68,18 +72,6 @@ trisau=rsau[order(unlist(rsau))]
 print(as.matrix(tribou))
 print(as.matrix(trichi))
 print(as.matrix(trisau))
-
-plot(trichi,xaxt='n')
-axis(1,at=1:29,labels=names(rchi))
-
-plot(tribou,xaxt='n')
-axis(1,at=1:29,labels=names(rbou))
-
-plot(trisau,xaxt='n')
-axis(1,at=1:29,labels=names(rsau))
-
-Rr=1-(sum(rchi))
-print(Rr)
 
 #PART2
 
@@ -117,3 +109,4 @@ sum(diag(Rma %*% Py))
 Pz= Z %*% solve(t(Z) %*% w %*% Z) %*% t(Z) %*% w
 
 sum(diag(Rma %*% Pz))
+

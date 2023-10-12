@@ -35,12 +35,16 @@ Dans ce TP, nous avons à notre disposition un tableau contenant une liste de 21
 \caption{Extrait du tableau} 
 \end{table} 
 
+Dans la première partie, nous avons fait le choix de ne pas utiliser le calcul matriciel pour obtenir les résultats attendus, la seconde partie étant justement présente pour valider par le calcul matriciel certains résultats obtenus dans la partie 1. Nous garderons les variables qualitatives dans nos tableaux et arrondirons nos résultats à $10^{-3}$ près. 
+
+On trouvera le code utilisé, en annexe à la fin.
+
 \section{Partie 1}
-Dans cette partie, nous désignerons par $(x_{i})$ où $i\in\{1;...;21\}$ les individus et $(x^{j})$ où $j\in\{1;...;32\}$ les variables, qu'elles soient quantitatives ou bien qualitatives. Enfin nous noterons $(z^{j})$ où $j\in\{4;...;32\}$ les variables quantitatives centrées-réduites.  
+Dans cette partie, nous désignerons par $(x_{i})$ où $i\in\{1;...;21\}$ les individus et $(x^{j})$ où $j\in\{1;...;32\}$ les variables, qu'elles soient quantitatives ou bien qualitatives. Enfin nous noterons $(z^{j})$ où $j\in\{4;...;32\}$ les variables quantitatives centrées-réduites. 
 \begin{enumerate}
-    \item Dans cette question nous placerons dans le cas général où $i\in\{1;...;n\}$ et $j\in\{1;...;p\}$
+    \item Dans cette question, nous nous plaçons dans le cas général où $i\in\{1;...;n\}$ et $j\in\{1;...;p\}$
     \begin{itemize}
-        \item[$\bullet$] On considère $(w_{i})_{i\in\{1...n\}}$ une suite de poids telle que $\displaystyle\sum_{i=1}^{n}=1$ et soit $j\in\{1;...;p\}$. On peut alors écrire : 
+        \item[$\bullet$] On considère $(w_{i})_{i\in\{1...n\}}$ une suite de poids telle que $\displaystyle\sum_{i=1}^{n} w_i=1$ et soit $j\in\{1;...;p\}$. On peut alors écrire : 
         \begin{align*}
             \sum_{i=1}^{n} w_i z_i^j = & \sum_{i=1}^{n} w_i \left(\dfrac{x_i^j-\overline{x^j}}{\sigma_{x^j}}\right)\\
             =& \dfrac{1}{\sigma_{x^j}}\sum_{i=1}^{n}\left(w_i x_{i}^j-w_i \overline{x^j}\right) \\
@@ -62,14 +66,10 @@ Dans cette partie, nous désignerons par $(x_{i})$ où $i\in\{1;...;21\}$ les in
 \end{tabular}
 \caption{extrait du tableau des barycentres} 
 \end{table}
+    
+R nous affiche des résultats de l'ordre de $10^{-16}$, on peut donc considérer qu'ils sont égaux à $0$.
 
-\begin{lstlisting}[language=R]
-Barycentre=(colMeans(CR[4:32]))
-print(Barycentre)
-\end{lstlisting}    
-Les résultats obtenus étant de l'ordre de $10^{-16}$, on peut considérer qu'ils sont égaux à $0$.
-
-    \item[$\bullet$] 
+    \item[$\bullet$] Calcul de l'inertie  par rapport à l'origine pour nos variables centrées-réduites : 
     \begin{align*}
        In_{O}\left(\{z_i;w_i\}_{i=1,...,n}\right) = & \sum_{i=1}^{n} w_i \norme{z_{i}}^2 \\
        = & \sum_{i=1}^{n} w_i \left(\sum_{j=1}^p {z_i^j}^2\right)\\
@@ -92,22 +92,12 @@ Les résultats obtenus étant de l'ordre de $10^{-16}$, on peut considérer qu'i
    \hline
 \end{tabular}
 \caption{extrait du tableau des variances} 
-\end{table}    
-    
-\begin{lstlisting}[language=R]  
-#variance 
-Variance=diag(var(CR[4:32]))
-print(Variance)
+\end{table}  
 
-#inertia
-Inertie=sum(Variance)
-print(Inertie)
-\end{lstlisting}
-
-Le résultat obtenu est 29 comme attendu.
+En sommant toutes ces variances, on obtient bien l'inertie qui est alors de $29$.  
     \end{itemize}
 
-\item Pour chaque appellation, nous avons effectuer un tri afin d'obtenir pour chaque appellation un tableau des individus. A partir de là, nous avons calculé le poids, les barycentres et les normes euclidiennes carrées de ces trois barycentres. Voici le code utilisé où CR désigne le tableau dont les variables quantitatives sont centrées et réduites : 
+\item Pour chaque appellation, nous avons effectuer un tri afin d'obtenir pour chaque appellation un tableau des individus. A partir de là, nous avons calculé le poids, les barycentres et les normes euclidiennes carrées de ces trois barycentres : 
 
 Voici un extrait d'un des tableaux : 
 
@@ -125,46 +115,41 @@ Voici un extrait d'un des tableaux :
 \caption{extrait du tableau de l'appelation Chinon} 
 \end{table}
 
-
-
-\begin{lstlisting}[language=R]
-"Q2"
-chinon=CR[CR$Label == 'Chinon',]
-saumur=CR[CR$Label == 'Saumur',]
-bourgueuil=CR[CR$Label == 'Bourgueuil',]
-
-#poids
-pchi=nrow(chinon)/nrow(CR)
-psau=nrow(saumur)/nrow(CR)
-pbou=nrow(bourgueuil)/nrow(CR)
-
-#barycentre
-mchi= unname(colMeans(chinon[4:32]))
-msau= unname(colMeans(saumur[4:32]))
-mbou= unname(colMeans(bourgueuil[4:32]))
-
-#carree des normes euclidiennes des barycentres
-nchi=sum(mchi^2)
-nsau=sum(msau^2)
-nbou=sum(mbou^2)
-\end{lstlisting}
-
 Voici les résultats obtenus : 
 
 % \usepackage{array} is required
+\begin{center}
 \begin{tabular}{|l|>{\centering\arraybackslash}p{3cm}|>{\centering\arraybackslash}p{3cm}|}
 \hline 
  & Poids & Norme \\ 
 \hline 
-Chinon & 0,1905 & 5,1428 \\ 
+Chinon & 0,190 & 5,400\\ 
 \hline 
-Saumur & 0,5338 & 2,0188 \\ 
+Saumur & 0,524 & 2,120\\ 
 \hline 
-Bourgueuil & 0,2857 & 3,4319 \\ 
+Bourgueuil & 0,286 & 3,604 \\ 
 \hline 
 \end{tabular} 
+\end{center}
 
-Pour chaque variable sensorielle, nous avons calculer le $R^2$. Nous avons donc obtenu $3$ vecteurs lignes de $29$ valeurs. Nous avons ensuite triés les valeurs et tracés les graphiques correspondant.
+\textbf{Inertie inter-appellation $In_{\text{inter}}$ :}
+
+\begin{align*}
+In_{\text{inter}}=&\sum_{k=1}^3 W^k\norme{\overline{x}^k}^2\\
+\approx& 3,169
+\end{align*}
+
+\textbf{Calcul du $R^2$ de la partition des vins en appellation :} 
+\begin{align*}
+R^2=&\frac{\text{Inertie inter-appellation}}{\text{Inertie du nuage}}\\
+\approx& 0,109
+\end{align*}
+
+Le rapport entre l'inertie des points moyens des appellations par rapport à l'inertie du nuage est dons d'environ $11\%$. Ce nombre représente  donc l'impact des appellations sur la dispersion des variables sensorielles. 
+
+ 
+%Faux de là à ...
+\item Pour chaque variable sensorielle, nous avons calculer le $R^2$. Nous avons donc obtenu $3$ vecteurs lignes de $29$ valeurs. Nous avons ensuite triés les valeurs et tracés les graphiques correspondant.
 
 Pour le Bourgueil :
 \begin{itemize}
@@ -183,6 +168,15 @@ Pour le Saumur :
 \item[$\bullet$] la moins liée : Surface.feeling 
 \item[$\bullet$] les plus liées par ordre croissant : Flower , Spice , Spice.before.shaking. 
 \end{itemize}
+%... à de là.
+
+Nous avons calculé le $R^2$, pour chaque variable sensorielle, rangé par ordre croissant les valeurs de ce vecteur ligne et tracé le graphique correspondant. 
+
+Variables les plus liées à l'appellation : 
+	\begin{itemize}
+	\item[$\bullet$] Odor.Intensity                  0.390583844 
+	\end{itemize}
+
 
 Montrons que le $R^2$ de la partition est égal à la moyenne arithmétique des $R^2$ des variables que l'on notera $M$. 
 \begin{align*}
@@ -193,7 +187,7 @@ M=& \frac{1}{29} \sum_{j=1}^{29} \frac{\text{Variance externe de la variable } j
  =& R^2_{\text{partition}}
 \end{align*}
 
-A faire informatiquement.
+Informatiquement, nous avons d'abord la variance inter-appellation pour chaque variable sensorielle , nous formant ainsi un vecteur ligne à 29 colonnes. Puis en sommant ces valeurs et en divisant par le nombre de valeur, ici 29, nous avons bien retrouvé la valeur du $R^2$ de la question \textbf{2.} à savoir $0,109$.
 \end{enumerate}
 
 \section{Partie 2}
@@ -227,5 +221,12 @@ Soit $j\in\{1;...;p\}$ :
 
 \item De la même façon, $\text{tr}(\Pi_{x^j}\Pi_{Z})$ est ... et $\text{tr}(R\Pi_{Z})$ est le $R^2$ de la partition des vins selon les types de sol.
 \end{enumerate}
+
+\newpage
+
+\appendix 
+\section{Code R}
+
+
 
 \end{document}
