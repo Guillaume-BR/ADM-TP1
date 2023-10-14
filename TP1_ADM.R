@@ -1,3 +1,8 @@
+library(xtable)
+wine=read.csv('~/ADM/ADM-TP1/wine.csv')
+xtable(wine[1:4,1:5], type = "latex", file = "wine.tex",digits = 3,
+       caption = "Extrait du tableau")
+
 #Mean and standard-deviation of the 29 quantitative variable in wine;
 M = unname(colMeans(wine[4:32]))
 V = unname(sapply(wine[4:32],sd))*sqrt(20/21) #variance corrigée ?? facteur (21/20) ?
