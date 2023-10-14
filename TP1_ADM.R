@@ -1,11 +1,6 @@
-library(xtable)
-wine=read.csv('~/ADM/ADM-TP1/wine.csv')
-xtable(wine[1:4,1:5], type = "latex", file = "wine.tex",digits = 3,
-        caption = "Extrait du tableau")
-
 #Mean and standard-deviation of the 29 quantitative variable in wine;
 M = unname(colMeans(wine[4:32]))
-V = unname(sapply(wine[4:32],sd)) #variance corrigée ?? facteur (21/20) ?
+V = unname(sapply(wine[4:32],sd))*sqrt(20/21) #variance corrigée ?? facteur (21/20) ?
 print(V)
 print(M)
 
@@ -13,11 +8,11 @@ print(M)
 CR=wine
 for (i in 1:29)
 {
-  CR[,3+i] <- (wine[,3+i]-M[i])/(V[i]*sqrt(20/21))
+  CR[,3+i] <- (wine[,3+i]-M[i])/(V[i])
 }
 #Check if variables ar indeed recuded and centered
 Barycentre=colMeans(CR[4:32])
-Variance=t(diag(var(CR[4:32])*20/21))
+Variance=diag(var(CR[4:32])*20/21)
 print(Variance)
 #inertia
 Inertie=sum(Variance)
@@ -48,12 +43,12 @@ nbou=sum(mbou^2)
 #Inertie externe
 Inex=pchi*nchi+psau*nsau+pbou*nbou
 Inex
-#R2 pour le partitionement en appellation A CORRIGER
+#R2 pour le partitionement en appellation
 R=Inex/Inertie
 print(100*R)
 
 #R2 par variable
-rvar=pchi*mchi^2+psau*msau^2+pbou*mbou^2
+rvar=pchi*mchi^2+psau*msau^2+pbou*mbou^2  #via normes euclidiennes
 print(rvar)
 trirvar=rvar[order(unlist(rvar))]
 trirvar
@@ -75,7 +70,7 @@ print(as.matrix(trisau))
 
 #PART2
 
-#Q2
+#Q1
 #def (a faire label)
 w=1/nrow(wine) * diag(1,nrow(wine))
 m=1/ncol(wine[4:32]) * diag(1,ncol(wine[4:32]))
@@ -87,26 +82,27 @@ Z=cbind(ifelse(CR$Soil == 'Env1',1,0),ifelse(CR$Soil == 'Env2',1,0),ifelse(CR$So
 Py= Y %*% solve(t(Y) %*% w %*% Y) %*% t(Y) %*% w
 print(Py)
 
-#piXjm
-j = 1
-rm(Px)
+#piXjw
+rm(j)
 Px=list()
-for (j in 1:21) {
-Px[[j]] = X[j,] %*% solve(t(X[j,]) %*% m %*% X[j,]) %*% t(X[j,]) %*% m
+for (j in 1:29) {
+  Px[[j]] = X[,j] %*% solve(t(X[,j]) %*% w %*% X[,j]) %*% t(X[,j]) %*% w
 }
 #tr
-T=sum(diag(Px[[1]]*Py))
+for (i in 1:29)
+{
+  T[i]=sum(diag(Px[[i]]%*%Py))
+}
 
-Test=Py%*%as.matrix(CR[4])
-print(CR[4])
-Va = unname(sapply(bourgueuil[4],mean))
-
+print(T)
+print(unname(rvar))
+#T EST BON, il coincide avec rvar de la première partie !
 
 #QC
 Rma=X %*% m %*% t(X) %*% w
 sum(diag(Rma %*% Py))
 
+#Q2
 Pz= Z %*% solve(t(Z) %*% w %*% Z) %*% t(Z) %*% w
-
 sum(diag(Rma %*% Pz))
 
