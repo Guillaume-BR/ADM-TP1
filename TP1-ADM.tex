@@ -240,7 +240,7 @@ Soit $j\in\{1;...;p\}$ :
  
  
 	
-	$\norme{\Pi_Yx^j}^2_{W}$ représente la variance de la variable $x^j$ par rapport à l'appellation.
+	$\norme{\Pi_Yx^j}^2_{W}$ représente la variance inter-appellation de la variable $x^j$.
 	
 	\item $\Pi_Y=Y\left(Y'WY\right)^{-1}Y'W$  et $\Pi_{x^j}=x^{j}\left({x^{j}}'Wx^{j}\right)^{-1}{x^{j}}'W$ sont des matrices carrées de taille $21$.\\
 
@@ -257,7 +257,21 @@ Soit $j\in\{1;...;p\}$ :
 	
 	Cette dernière quantité représente le $R^2(x^j | Y)$ de la $j$-ème variable dans la partition des données en appellation. C'est $j$-ème valeur de notre variable informatique rvar.
 	
-	Voici un extrait de $\text{tr}(\Pi_x^j \Pi_Y)$ :	
+	Voici un extrait de $\text{tr}(\Pi_{x^j} \Pi_Y)$ :	
+	
+	\begin{center}
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrr}
+  \hline
+ & 1 & 2 & 3 & 4 \\ 
+  \hline
+1 & 0.342 & 0.170 & 0.011 & 0.047 \\ 
+   \hline
+\end{tabular}
+\caption{Extrait de $\Pi_X\Pi_Y$} 
+\end{table}
+	\end{center}
 	
 	\item \begin{align*}
 	 \tr(R \Pi_Y)=&\sum_{j=1}^p  \tr(R \Pi_{y^j}) \text{ car } Y=\overset{\perp}{\oplus} y^j \\
@@ -287,7 +301,7 @@ $\sigma_{x^j}^2$ inter-appellation	 & Variance inter-appellation de la $j$-ème 
 	\hline 
 	$R^2(x^j|Y)$ & $R^2$ de la $j$-ème variable par rapport à l'appellation  & $\text{tr}(\Pi_{x^j}\Pi_{Y})$ \\ 
 	\hline 
-	$R^2_{\text{appellation}}$ & $R^2_{\text{appellation}}$ & $\text{tr}(R\Pi_Y)$ \\ 
+	$R^2$ de la partition en appellation & $R^2_{\text{appellation}}$ & $\text{tr}(R\Pi_Y)$ \\ 
 	\hline 
 	\end{tabular} 
 	\end{center}
