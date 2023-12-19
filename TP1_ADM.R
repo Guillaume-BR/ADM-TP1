@@ -88,7 +88,7 @@ for (i in 1:29)
 
 print(T)
 
-xtable(as.matrix(t(T[1:4]), type = "latex", file = "wine.tex",digits = 3,
+xtable(t(as.matrix(T[1:4])), type = "latex", file = "wine.tex",digits = 3,
        caption = "Extrait du tableau")
 
 print(unname(rvar))
