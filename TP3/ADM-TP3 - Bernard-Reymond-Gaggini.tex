@@ -272,7 +272,7 @@ Cumulative $\%$ of var. & 16.871 & 27.696 & 36.330 & 42.668 & 47.764 & 52.608 & 
 \end{tabular}
 \end{center}
 
-On a un décrochement entre la 4-ème et la 5-ème valeurs ce qui nous pousse à nous intéresser aux quatre premiers axes. C'est déjà une différence avec l'ACP normée. 
+On a un décrochement entre la 4-ème et la 5-ème valeur ce qui nous pousse à nous intéresser aux quatre premiers axes. C'est déjà une différence avec l'ACP normée. 
 
 \subsection{Etude des différents plans}
 
@@ -418,25 +418,118 @@ Sur l'axe 4, trois variables ont une forte contribution : \emph{MarcheAPied} (13
 
 \bigskip
 
-Ces trois variables semblent décrire des variables liées à une population de retraités. Il faudrait regarder plus en détail les villes concernées pour en avoir le c\oe ur net.  
+Ces trois variables semblent décrire des variables liées à une population de retraités. Il faudrait regarder plus en détails les villes concernées pour en avoir le c\oe ur net. 
 
- 
+\subsection{Conclusion}
 
-   
-
-
-
-
-
-
+Cette ACP de rang a permis de dégager d'autres résultats. En effet sur l'axe 1, Neuilly-Sur-Seine était un individu très singulier de part sa contribution disproportionné. L'ACP de rang a permis de gommer cette singularité. De même, l'axe 3 s'est trouvé modifier car la contribution de Paris a été amoindri permettant de faire émerger d'autres villes où la culture était bien présente. 
 
 
 \section{ACP normé pour les différents thèmes}
 
+\subsection{Thème Economie} 
+
+\subsection{Thème Risques}
+
+Voici le graphique des valeurs propres : 
+
+\centerline{\includegraphics[width=0.8\linewidth]{images/ACP_ris_vp}}
+
+On constate un décrochement entre la 3-ème et la 4-ème valeur propre. De plus, la variance cumulée sur les 3 premières valeurs propres est de 46,41\%. Nous considérerons 3 axes.
+
+\bigskip
+
+{\large \textbf{Plan (1,2)}}
+ 
+\centerline{\begin{tabular}{ccc}
+\includegraphics[width=0.55\linewidth]{images/ACP_ris_ind_12} & 
+&
+\includegraphics[width=0.40\linewidth]{images/ACP_ris_var_12}
+\end{tabular}}
+
+Voici les graphiques des individus avec les 10 plus gros contributeurs et celui des variables où sont indiquées les 8 variables les plus contributrices.
+
+Du côté des variables, se dessinent deux faisceaux avec des thèmes propres. Un premier faisceau, qui nous parlent de mortalité : \emph{MortaliteGlobale} (CTR : 22,39\%), \emph{MortaliteAlcool} (14,92\%), \emph{MortaliteCancerPoumon} (13,95\%) et \emph{DecesInfarctus} (13,71\%). \emph{MortaliteGlobale} a d'ailleurs un COS2 assez élevé sur la première dimension : 0,74. Cette variable est donc assez bien corrélée avec la composante 1.\\
+
+Trois villes  pointent de la même région pointent dans la même direction que les 4 variables précédemment citée : Lille (CTR : 8,30\% ;  COS2 : 0,67), Valenciennes (CTR1 : 4,79\% ; COS2 : 0,43) et Dunkerque (CTR1 : 3,97 ; COS2 : 0,41). Une autre ville est très contributrice au positionnement de l'axe 1, mais pointe dans la direction opposée : \emph{Neuilly-Sur-Seine} (CTR1 : 11,08\%). \\
+
+Neuilly-Sur-Seine est aussi opposée au second faisceau de variables qui nous parle davantage de retard scolaire. Ces variables sont très contributrices au positionnement de l'axe 2. Il paraît malheureusement logique que ce retard scolaire dès la 6-ème (CTR2 : 19,21\%), soit perpétué en 3-ème (CTR2 : 15,85\%\%) puis en terminale (CTR2 : 7,15\%). La variables \emph{Ciminalite} participe aussi très fortement au positionnement de l'axe 2 avec une contribution de 15,78\%. Malgré de fortes contributions, l'étude des COS2 ne montre rien de très significatif \\
+
+Du côté des individus, Avignon tire une bonne partie son originalité de cet axe avec un COS2 égale à 0,67. Elle pointe malheureusement dans la même direction que la criminalité et le retard scolaire.
+
+\bigskip
+
+{\large \textbf{Plan (2,3)}}
+ 
+\centerline{\begin{tabular}{ccc}
+\includegraphics[width=0.55\linewidth]{images/ACP_ris_ind_23} & 
+&
+\includegraphics[width=0.40\linewidth]{images/ACP_ris_var_23}
+\end{tabular}}
+
+Sur ce plan, on distingue clairement un regroupement de plusieurs grandes villes de France qui contribuent au positionnement de l'axe 3 : \emph{Strasbourg} (CTR3 : 10,16\%) \emph{Marseille} (CTR3 :8,18\%), \emph{Bordeaux} (CTR3 : 7,44\%), Lyon (CTR3 : 5,88\%) et \emph{Toulouse} (CTR3 : 4,52\%). L'originalité de Bordeaux est d'ailleurs bien visible sur cet axe avec un COS2 de 0,69.\\
+
+On retrouve parmi les variables les plus contributrices pointant dans la direction de ces villes : \emph{TerrainPollue} (CTR3 : 20,71\%), \emph{Inondations} (CTR3 : 17,50\%) et \emph{UsinesRisques : 11,45\%}. Toutefois il n'y pas de forte corrélation entre ces variables et l'axe 3, leur COS2 étant assez faible.
+
+	\subsection{Thème Nature}
+	
+Sur ce thème nous ne regarderons que les deux premiers axes. En effet ils capturent 73,75\% de l'information. On observe un décrochement entre la valeur propre 2 et la valeur propre 3 qui est de plus inférieure à 1.
+	
+\centerline{\includegraphics[width=0.8\linewidth]{images/ACP_nat_vp}}
+
+\bigskip
+
+{\large \textbf{Plan (1,2)}}
+
+\centerline{\begin{tabular}{ccc}
+\includegraphics[width=0.55\linewidth]{images/ACP_nat_ind_12} & 
+&
+\includegraphics[width=0.40\linewidth]{images/ACP_nat_var_12}
+\end{tabular}}
+
+Ici l'étude est assez simple. On remarque 3 variables qui ont positionnées l'axe 1 : \emph{Soleil} (CTR : 31,33\%), \emph{Temperature} (CTR : 30,00\%) et \emph{Pluie} (CTR : 27,09\%). La variable \emph{Pluie} est logiquement anti-corrélée aux deux autres. Ces trois variables sont très corrélées avec cet axe. Leur COS2 est respectivement de 0,91 ; 0,87 et 0,78.\\
+
+Sur le plan des individus, on voit un grand groupe de villes du Sud de la France dans la même direction que les variables \emph{Soleil} et \emph{Température}. On peut citer par exemple : \emph{Toulon} (CTR1 : 7\% ; COS2 : 0,96), \emph{Marseille} (CTR1 : 5,90 ; COS2 : 0,92), \emph{Antibes} (CTR1 : 5,86\% ; COS2 : 0,88) et\emph{Nice} (CTR1 : 5,55\% ; COS2 : 0,89). Pour ces villes citées et celles du groupe, l'originalité visible sur cet axe représente quasiment la totalité.\\
+
+Pour l'axe 2, les variables \emph{Ski} (CTR2 : 41,47\% ; COS2 : 0,64) et \emph{MarcheAPied} (CTR2 : 40,11\% ; COS2 : 0,62) ont clairement positionné notre axe même si leur corrélation avec cet axe n'est pas si grande. \\
+
+\emph{Gap} (CTR2 : 5,14\% ; COS2 : 0,76), \emph{Vichy} (CTR2 : 4,31\% , COS2 : 0,82), \emph{Annecy} (CTR2 : 4,08\% , COS2 : 0,74) et \emph{Nancy} (CTR2 : 4,00\%, COS2 : 0,60) ont contribué à positionné l'axe qui parle d'elles. Ces villes n'ont pas tout à fait le même profil, car si Gap et Annecy sont, de part leur positionnement géographiques, des villes tournées vers le ski, il n'en ai clairement pas question pour Vichy et Nancy où la variable \emph{MarcheAPied} a du jouer un rôle important.
+
 \section{ACP de rang pour les différents thèmes}
 
+\subsection{Thème Risques}
 
+\centerline{\includegraphics[width=0.8\linewidth]{images/ACPR_ris_vp}}
 
+Il n'y pas de changement notable dans l'étude des valeurs propres. On observe le même décrochement entre la 3-ème et la 4-ème valeur.\\
+
+L'étude des plans (1,2) et (2,3) dont les graphiques se trouvent ci-dessous ne nous montre rien de plus. En effet on retrouve les mêmes faisceaux de variables avec peu ou proue les mêmes villes. Ceci s'explique par le fait qu'il n'y avait pas d'individu singulier par rapport aux variables du thème.
+
+\centerline{\begin{tabular}{ccc}
+\includegraphics[width=0.55\linewidth]{images/ACPR_ris_ind_12} & 
+&
+\includegraphics[width=0.40\linewidth]{images/ACPR_ris_var_12}
+\end{tabular}}
+
+\centerline{\begin{tabular}{ccc}
+\includegraphics[width=0.55\linewidth]{images/ACPR_ris_ind_23} & 
+&
+\includegraphics[width=0.40\linewidth]{images/ACPR_ris_var_23}
+\end{tabular}}
+
+\subsection{Thème Nature}
+
+\centerline{\includegraphics[width=0.8\linewidth]{images/ACPR_nat_vp}}
+
+Bien que l'inertie capturé par les deux premiers axes soit inférieur à celles obtenue lors de l'ACP normée, nous ne garderons de nouveaux que deux axes. Ils capturent 67,49\% de la variance.\\
+
+Certes quelques différences de valeurs apparaissent mais on retrouve sensiblement les mêmes résultats que lors de l'ACP normée, notamment le groupe des villes du Sud et le positionnement opposé sur l'axe deux pour d'un côté des villes typées montagne (Annecy, Gap, Chambéry, Clermont-Ferrand) et de l'autre deux villes de bord de mer (Dunkerque, Quimper, Saint-Nazaire).
+
+\centerline{\begin{tabular}{ccc}
+\includegraphics[width=0.55\linewidth]{images/ACPR_nat_ind_12} & 
+&
+\includegraphics[width=0.40\linewidth]{images/ACPR_nat_var_12}
+\end{tabular}}
 
 
  
