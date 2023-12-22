@@ -428,10 +428,43 @@ Cette ACP de rang a permis de dégager d'autres résultats. En effet sur l'axe 1
 \section{ACP normé pour les différents thèmes}
 
 \subsection{Thème Economie} 
+Voici le graphique des valeurs propres :
+
+\centerline{\includegraphics[width=0.8\linewidth]{images/VP1}}
+n'ayant de décrochement claire qu'aprés la 4em valeur propre,
+On se restreindra a 2 axes qui permettrons d'explorer 40,25\% de la variance totale pour le theme economie,
+
+\centerline{\begin{tabular}{ccc}
+\includegraphics[width=0.55\linewidth]{images/I_1_0,85} &
+&
+\includegraphics[width=0.40\linewidth]{images/V_1_0,85}
+\end{tabular}}
+
+Se limiter aux individus et variable les mieux représenté dans un premier temps \emph(cos2>0,85)\%
+dégage un premier cluster "SalaireAnnuel", "ImpotRevenu", "ImpotFortune","MetreCarreAncien" portée par les villes de l'ouest parisien.\\
+Ce plan est alors fortement déterminer par les indicateur du niveau de richesse de ces villes, c'est concidération qui nous sert de levier d'interprétation la suite :
+
+\centerline{\begin{tabular}{ccc}
+\includegraphics[width=0.55\linewidth]{images/I_1_0,6} &
+&
+\includegraphics[width=0.40\linewidth]{images/V_1_0,6}
+\end{tabular}}
+
+En étant plus tolérant \emph(cos2>0,6)\% : un deuxieme cluster  "AttiranceGlobale", "AttiranceActifs" se détaches, et deux nouveau groupes s'opposant apparaissent :\\
+D'une part : Lyon,Nancy,Melun et Rouen, qui on permis la détermination de ce cluster par leur point commun (une fort valeur d'attirance Global et Actif) mais surtout leur différences communes : elles sont toutes loins derriere l'ouest parisien en niveau de richesse.\\
+Notons que dans le tableau de donnée brut, le top 10 dans ces 2 catégorie est présque partager entre ce groupes et l'ouest parisien, ce qui renforce l'idée c'est cette grande différence qui a permis l'émergeance de se second groupement.\\
+D'autre part : LeHavre, Arles Beziers, qui forme un groupe antagoniste au deux précédent (ces trois villes étant dans le bas du classement dans la plus part des indicateur en richesse et attirance)\\
+
+L'émergence de ce dernier groupe éclaire et améliore nos premiers traveau sur ce jeux de donnée :\\
+On retrouve l'intuition de notre premiere interprétation des 3 classes obtenue (lors du TP2) par la CAH du theme, la riche region parisienne occupé déja ça propre classe (3) et
+Lyon,Nancy,Melun et Rouen étaient bien dans la même classe des "villes relativement attractive"(1)\\
+
+Mais avec une meilleur comprehention ici entre ce qui fait les point communs de la classe 1 et 3 (une haute attirance Global/Actif)
+et ce qui fait de la classe 2 (dont LeHavre, Arles, Beziers font paris) une classe si différentes des deux autres : sont faible niveau de richesse ET faible attirance Global/Actif\\
 
 \subsection{Thème Risques}
 
-Voici le graphique des valeurs propres : 
+Voici le graphique des valeurs propres :
 
 \centerline{\includegraphics[width=0.8\linewidth]{images/ACP_ris_vp}}
 
@@ -440,9 +473,9 @@ On constate un décrochement entre la 3-ème et la 4-ème valeur propre. De plus
 \bigskip
 
 {\large \textbf{Plan (1,2)}}
- 
+
 \centerline{\begin{tabular}{ccc}
-\includegraphics[width=0.55\linewidth]{images/ACP_ris_ind_12} & 
+\includegraphics[width=0.55\linewidth]{images/ACP_ris_ind_12} &
 &
 \includegraphics[width=0.40\linewidth]{images/ACP_ris_var_12}
 \end{tabular}}
@@ -460,9 +493,9 @@ Du côté des individus, Avignon tire une bonne partie son originalité de cet a
 \bigskip
 
 {\large \textbf{Plan (2,3)}}
- 
+
 \centerline{\begin{tabular}{ccc}
-\includegraphics[width=0.55\linewidth]{images/ACP_ris_ind_23} & 
+\includegraphics[width=0.55\linewidth]{images/ACP_ris_ind_23} &
 &
 \includegraphics[width=0.40\linewidth]{images/ACP_ris_var_23}
 \end{tabular}}
@@ -470,6 +503,30 @@ Du côté des individus, Avignon tire une bonne partie son originalité de cet a
 Sur ce plan, on distingue clairement un regroupement de plusieurs grandes villes de France qui contribuent au positionnement de l'axe 3 : \emph{Strasbourg} (CTR3 : 10,16\%) \emph{Marseille} (CTR3 :8,18\%), \emph{Bordeaux} (CTR3 : 7,44\%), Lyon (CTR3 : 5,88\%) et \emph{Toulouse} (CTR3 : 4,52\%). L'originalité de Bordeaux est d'ailleurs bien visible sur cet axe avec un COS2 de 0,69.\\
 
 On retrouve parmi les variables les plus contributrices pointant dans la direction de ces villes : \emph{TerrainPollue} (CTR3 : 20,71\%), \emph{Inondations} (CTR3 : 17,50\%) et \emph{UsinesRisques : 11,45\%}. Toutefois il n'y pas de forte corrélation entre ces variables et l'axe 3, leur COS2 étant assez faible.
+
+\bigskip
+
+\subsection{Thème Culture}
+
+On se restreindra a 2 axes qui permettrons d'explorer 63.80\% de la variance totale pour le theme culture
+
+\centerline{\includegraphics[width=0.5\linewidth]{images/VP3}}
+
+\bigskip
+
+\centerline{\begin{tabular}{ccc}
+\includegraphics[width=0.55\linewidth]{images/I_3_0,9} &
+&
+\includegraphics[width=0.30\linewidth]{images/V_3_0,9}
+\end{tabular}}
+
+Dans cette premiere ACP du theme culuture, la place énorme qu'occupe Paris dans la détermination du plan permet difficilement d'etudier l'etalement verticale qui se dessine en élargissant notre tolérance a \emph(cos2>0,5)\% :\\
+\centerline{\begin{tabular}{ccc}
+\includegraphics[width=0.55\linewidth]{images/I_3_0,5} &
+&
+\includegraphics[width=0.30\linewidth]{images/V_3_0,5}
+\end{tabular}}
+Qui pourra étre mieux explorer dans l'ACP par rang.
 
 	\subsection{Thème Nature}
 	
@@ -496,6 +553,30 @@ Pour l'axe 2, les variables \emph{Ski} (CTR2 : 41,47\% ; COS2 : 0,64) et \emph{M
 \emph{Gap} (CTR2 : 5,14\% ; COS2 : 0,76), \emph{Vichy} (CTR2 : 4,31\% , COS2 : 0,82), \emph{Annecy} (CTR2 : 4,08\% , COS2 : 0,74) et \emph{Nancy} (CTR2 : 4,00\%, COS2 : 0,60) ont contribué à positionné l'axe qui parle d'elles. Ces villes n'ont pas tout à fait le même profil, car si Gap et Annecy sont, de part leur positionnement géographiques, des villes tournées vers le ski, il n'en ai clairement pas question pour Vichy et Nancy où la variable \emph{MarcheAPied} a du jouer un rôle important.
 
 \section{ACP de rang pour les différents thèmes}
+\subsection{Thème Economie}
+
+On se restreindra encore a 2 axes ici:
+
+\centerline{\includegraphics[width=0.5\linewidth]{images/VP2}}
+
+Une ACP de rang pour ce theme permet une analyse plus fine, en réduisant drastiquement l'impact des individus trés attypiques, on peut désormais observer d'autres disparité.\\
+En se limitant a \emph  COS2>0,5 \%, on peur désormais mieux éxplorer la structures des villes a faible richesse et attirance observer dans l'ACP normée:
+
+\centerline{\begin{tabular}{ccc}
+\includegraphics[width=0.6\linewidth]{images/I_2_0,5} &
+&
+\includegraphics[width=0.3\linewidth]{images/V_2_0,5}
+\end{tabular}}
+
+
+Une premiére partie dans le cadran inferrieur gauche (montauban,cholet,gap...) des villes a haut emplois communal et grand nombre de large habitat (logtsup4piece),et où l'opposition au grandes métropoles se fait moins par leur niveau de richesse que par leur faible capacité a attiré de nouveau habitant.\\
+On y retrouve d'ailleur les villes en bordure de zones rurales et d'ancien bassin ouvrier, nous confortant dans cette interprétation.\\
+
+Une deuxieme partie dans le cadran superrieur droit (bezier, perpignon avigon...) des villes a haut taux de chomage et chomage long, et où désormais l'opposition au grandes métropoles se fait moins par leur capacité à attiré de nouveau habitant que par leur faible niveau de richesse.\\
+
+On y retrouve les villes du litoralles, touristique, avec beaucoup d'affluance de retraité, nous confortant dans cette interprétation.\\
+
+Bien que ces différence soit beaucoup moins trancher que pour l'ACP normé, elle suggère de nouvelles dynamiques qui n'étaient pas mis en évidence lorsque la riche region parisenne polariser autant les axes.
 
 \subsection{Thème Risques}
 
@@ -516,6 +597,23 @@ L'étude des plans (1,2) et (2,3) dont les graphiques se trouvent ci-dessous ne 
 &
 \includegraphics[width=0.40\linewidth]{images/ACPR_ris_var_23}
 \end{tabular}}
+
+\subsection{Thème Culture}
+
+Ici, l'acp par rang nous permet, toujours avec 2 axes, de bien mieux observer les disparité entre les villes:
+
+
+\centerline{\includegraphics[width=0.8\linewidth]{images/VP4}}
+
+\centerline{\begin{tabular}{ccc}
+\includegraphics[width=0.6\linewidth]{images/I_4_0,8} &
+&
+\includegraphics[width=0.3\linewidth]{images/V_4_0,8}
+\end{tabular}}
+
+En se limitant a \emph(cos2>0,9)\%, on peut désormé mieux comprendre l'étallement des groupe de villes déterminant la position des variables presse et etudiants :\\
+En effet, on découvre alors que les villes (hors paris) ayant de haute valeur pour presse sont majoritairement les villes acceuillant de grands évènement culturel,(canne,angouleme...), villes ne disposant souvent pas des grande infrastructure (grandes écoles, université) pour attiré les millieux etudiants.
+
 
 \subsection{Thème Nature}
 
