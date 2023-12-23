@@ -19,7 +19,7 @@
 \usepackage[vmargin=2cm,hmargin=2cm]{geometry}
 
 
-\title{TP2-ADM}
+\title{TP3 - ADM}
 \author{Guillaume Bernard-Reymond et Lorenzo Gaggini}
 \date{Décembre 2023}
 
@@ -31,15 +31,15 @@
 
 Dans ce TP, nous avons à notre disposition un jeu données concernant 100 villes françaises dont on connaît 54 indicateurs répartis en quatre grands thèmes : Economie, Risques, Nature et Culture.\\
 
-Nous avons décidé d'utiliser la bibliothèque Factoshiny pour son confort d'utilisation. 
+Nous avons décidé d'utiliser la bibliothèque Factoshiny pour son confort d'utilisation. On trouvera le code R utilisé en appendice.
 
-\section{ACP normé sur l'ensemble des variables}
+\section{ACP normée sur l'ensemble des variables}
 
 \subsection{Etude de la variance cumulée}
 
-Dans un premier temps, nous nous intéressons à la variance cumulée et notamment les grands décrochements. Nous allons devoir faire un choix qui ne sera malheureusement pas sans perte d'informations.
+Dans un premier temps, nous nous intéressons à la variance cumulée et notamment aux grands décrochements. Nous allons devoir faire un choix qui ne sera malheureusement pas sans perte d'informations.\\
 
-Voici le graphique des valeurs des valeurs propres : 
+Voici le graphique des valeurs propres : 
 
 \centerline{\includegraphics[width=\linewidth]{images/ACP_vp}} 
 
@@ -63,7 +63,7 @@ Cumulative $\%$ of var. & 16.508 & 27.414 & 35.767 & 42.519 & 48.641 &  53.862 &
 
 Le nombre d'axes choisis pour mener l'étude de l'ACP est le même pour les individus que les variables car les valeurs propres des opérateurs d'inertie directe et duale sont les mêmes à un certain nombre de valeur propres nulles près. Ainsi dans toute la suite du rapport, nous ne distinguerons plus, sauf mention explicite du contraire, la variance cumulée des individus et celle des variables.\\
 
-On peut observer un décrochement après la troisième valeur propre.  Nous nous contenterons des trois premiers axes avec une inertie cumulée de seulement 35.767\%. Pour être plus exhaustif, on pourrait prendre davantage de valeurs propres. Toutefois, ne pouvant observer de véritables décrochements dans les valeurs propres, nous serions obligés d'en garder environ 8 car la différence entre deux valeurs successives est faible. Le temps de traitement en deviendrait trop long.  
+On peut observer un décrochement après la troisième valeur propre.  Nous nous contenterons donc des trois premiers axes avec une inertie cumulée de seulement 35.767\%. Pour être plus exhaustif, on pourrait prendre davantage de valeurs propres. Toutefois, ne pouvant observer de véritables décrochements dans les valeurs propres, nous serions obligés d'en garder environ 8 car la différence entre deux valeurs successives est faible. Le temps de traitement en deviendrait trop long.  
 
 \subsection{Etude des variables}
 
@@ -81,11 +81,11 @@ Sur les graphiques suivants sont marqués les 10 variables les plus contributive
 \begin{itemize}
 	\item[$\bullet$] \textbf{Contribution}
 
-	Tout d'abord, observons que $ \frac{1}{54}\approx 2\%$ ce qui nous 	pousse à ne considérer que les variables dont la contribution est très supérieure à $2\%$. On trouve alors : \emph{Imposables} (9,41\%), \emph{SalairesAnnuels} (8,38\%), \emph{MetreCarreAncien} (7,75\%), \emph{ImpotRevenu} (7,46\%) et \emph{ImpotFortune} (6,52\%). En additionnant, leur contribution on obtient : $39,52\%$ ce qui est très supérieur à $5\times 2\%=10\%$. Ce sont donc des variables économiques qui contribuent en une part importante à la fabrication de l'axe 1. On voit d'ailleurs sur le plan (1,2), ce groupe de variables allant dans la même direction.
+	Tout d'abord, observons que $ \frac{1}{54}\approx 2\%$ ce qui nous pousse à ne considérer que les variables dont la contribution est très supérieure à $2\%$. On trouve alors : \emph{Imposables} (9,41\%), \emph{SalairesAnnuels} (8,38\%), \emph{MetreCarreAncien} (7,75\%), \emph{ImpotRevenu} (7,46\%) et \emph{ImpotFortune} (6,52\%). En additionnant, leur contribution on obtient : $39,52\%$ ce qui est très supérieur à $5\times 2\%=10\%$. Ce sont donc des variables économiques qui contribuent en une part importante à la fabrication de l'axe 1. On voit d'ailleurs sur le plan (1,2), ce groupe de variables allant dans la même direction et formant un faisceau.
 
 	\item[$\bullet$] \textbf{Originalité : COS2}
 	
-	On retrouve ici, les mêmes variables que précédemment et dont l'originalité est principalement décrite par l'axe 1 : \emph{Imposables} (0,84), \emph{SalairesAnnuels} (0,75), \emph{ImpotFortune} (0,66), \emph{MetreCarreAncien} (0,65). \\
+	Du fait de la proportionnalité entre la contribution et l'originalité, on retrouve ici les mêmes variables que précédemment et dont l'originalité est principalement décrite par l'axe 1 : \emph{Imposables} (0,84), \emph{SalairesAnnuels} (0,75), \emph{ImpotFortune} (0,66), \emph{MetreCarreAncien} (0,65). \\
 	
 On peut en conclure que cet axe 1 décrit des marqueurs de richesse.
 	
@@ -97,12 +97,14 @@ On peut en conclure que cet axe 1 décrit des marqueurs de richesse.
 
 \begin{itemize}
 \item[$\bullet$] \textbf{Contribution}
-Parmi les variables dont la contribution est très supérieure à $2\%$, il y a : \emph{Soleil} (11,20\%), \emph{Température} (11,01\%), \emph{MortaliteAlcool} (8,50\%), \emph{Pluie} (8,33\%) et \emph{MortaliteGlobale} (6,43\%). De manière cumulée, on obtient 45,47\%. Sur la représentation du plan (1,2), on voit ces variables s'opposer : \emph{Soleil} et \emph{Température} d'un côté, les trois restantes de l'autre.  
+
+Parmi les variables dont la contribution est très supérieure à $2\%$, il y a : \emph{Soleil} (11,20\%), \emph{Température} (11,01\%), \emph{MortaliteAlcool} (8,50\%), \emph{Pluie} (8,33\%) et \emph{MortaliteGlobale} (6,43\%). De manière cumulée, on obtient 45,47\%. Sur la représentation du plan (1,2), on voit ces variables sont négativement corrélées : \emph{Soleil} et \emph{Température} d'un côté, les trois restantes de l'autre.  
 
 \item[$\bullet$] \textbf{Originalité : COS2}
+
 L'originalité des variables \emph{Soleil} et \emph{Temperature} est capturée à hauteur de $0,66$ et $0,65$ par l'axe 2. Si on leur ajoute leurs valeurs sur les axes 1 et 3, on trouve \emph{Soleil} : 0,8 et \emph{Temperature} : 0,8 aussi. Pour la \emph{MortaliteAlcool}, on a $0,50$ sur l'axe 2 et $0,61$ si l'on considère les trois axes. De même, le COS2 de la mortalité globale est de $0,38$ le long de l'axe 2 et $0,64$ si l'on considère les 3 axes. Enfin pour la pluie, on trouve $0,49$ sur l'axe 2 et $0,65$ pour les 3 axes.
 
-Ici on commence à avoir une idée de ce que semble représenter cet axe : une opposition entre le Nord et le Sud de la  France. L'étude ultérieure des individus nous permettra d'en dire  certainement plus.
+Ici on commence à avoir une idée de ce que semble représenter cet axe : une opposition entre le Nord et le Sud de la France. L'étude ultérieure des individus nous permettra d'en dire certainement plus.
 
 \end{itemize} 
 
@@ -154,7 +156,7 @@ Pour ce qui concerne la contribution, nous comparerons les valeurs avec la contr
 
 \begin{itemize}
 \item[$\bullet$] \textbf{Contribution} 
-Six villes ont une contribution forte pour l'axe 1 dont une plus particulièrement : 
+Six villes ont une forte contribution pour l'axe 1 dont une plus particulièrement : 
 
 \begin{center}
 \begin{tabular}{|l|*{7}{m{1.7cm}|}}
@@ -170,7 +172,7 @@ La contribution de ces six villes est très largement supérieure à la contribu
 
 \item[$\bullet$] \textbf{Originalité : COS2}
 
-Les villes dont l'originalité est largement supportée par l'axe 1 sont les mêmes que précédemment à l'exception notable de Paris : 
+Les villes dont l'originalité est largement supportée par l'axe 1 sont les mêmes que précédemment à l'exception notable de \emph{Paris} : 
 
 \begin{center}
 \begin{tabular}{|l|*{6}{m{2cm}|}}
@@ -182,10 +184,10 @@ Originalité & 0,73 & 0,67 & 0,65 & 0,61 & 0,57\\
 \end{tabular}
 \end{center} 
 
-L'originalité de Paris le long de cet axe est seulement de 0,25. Ceci semble indiqué que Paris n'est pas seulement originale par sa dimension économique mais que son originalité est multiple. 
+L'originalité de \emph{Paris} le long de cet axe est seulement de 0,25. Ceci semble indiquer que Paris n'est pas seulement originale par sa dimension économique mais que son originalité est multiple. 
 \end{itemize}
 
-Ce que l'on peut conclure de cette étude de l'axe 1, c'est que ce dernier représente effectivement des variables économiques et que quelques villes de l'Ouest parisien contribue fortement à son orientation. Si l'on met côte à côte la plan (1,2) du graphe de l'ACP des variables et celui des individus, on remarque évidemment une direction similaire entre les variables étudiées et les villes contributives.
+Ce que l'on peut conclure de cette étude de l'axe 1, est que ce dernier représente effectivement des variables économiques et que quelques villes de l'Ouest parisien contribue fortement à son orientation. Si l'on met côte à côte le plan (1,2) du graphe de l'ACP des variables et celui des individus, on remarque évidemment une direction similaire entre les variables étudiées et les villes contributives.
 
 \bigskip
 
@@ -194,7 +196,7 @@ Ce que l'on peut conclure de cette étude de l'axe 1, c'est que ce dernier repr�
 \begin{itemize}
 \item[$\bullet$] \textbf{Contribution}
 
-Les principales contributions à la construction de l'axe 2 sont données par 6 villes : \emph{Lille} (7,42\%), \emph{Antibes} (5,85\%), \emph{Cannes} (5,13\%), \emph{Valenciennes} (4,71\%), Nice (4,60\%) et Saint-Denis (4,17\%). En additionnant leur contribution, on obtient 31,88\%. 
+Les principales contributions à la construction de l'axe 2 sont données par 6 villes : \emph{Lille} (7,42\%), \emph{Antibes} (5,85\%), \emph{Cannes} (5,13\%), \emph{Valenciennes} (4,71\%), \emph{Nice} (4,60\%) et \emph{Saint-Denis} (4,17\%). En additionnant leur contribution, on obtient 31,88\%. 
 
 \item[$\bullet$] \textbf{Originalité : COS2}
 
@@ -203,46 +205,48 @@ Les cnq villes dont l'originalité est décrite partiellement par cet axe 2 sont
 
 De cet axe 2 se dégage un axe Nord-Sud. Au Nord, des villes pluvieuses avec une mortalité globale supérieure et au Sud des villes chaudes et ensoleillées.
 
-L'édition du plan (2,3) nous montre un regroupement de villes du Sud :
+L'édition du plan (2,3) nous montre un regroupement de villes du Sud dans le quart supérieur gauche :
 
 \centerline{\includegraphics[width=0.5\linewidth]{images/ACP_ind_23_contrib}} 
 
 Ce regroupement se trouve être justement dans la même direction que celui des variables \emph{Soleil} et \emph{Temperatures}.
 
-\bigskip
+\newpage
 
 {\large \textbf{Axe 3}}
 
 Voici le plan (1,3) des individus : 
 
-\centerline{\includegraphics[width=0.5\linewidth]{images/ACP_ind_13_contrib}} 
+\centerline{\includegraphics[width=0.8\linewidth]{images/ACP_ind_13_contrib}} 
 
 \begin{itemize}
 \item[$\bullet$] \textbf{Contribution}
 
-On trouve ici quelques contributeurs importants et notamment une ville singulière \emph{Paris} contribuant à hauteur de $27,86\%$. Les deux autres villes sont \emph{Saint-Denis} (7,53\%) et Marseille (5,06\%). Dans une moindre mesure : \emph{Gap} (3,31\%) et \emph{Cholet} (3,09\%) contribue à la construction de cet axe.
+On trouve ici quelques contributeurs importants et notamment une ville singulière \emph{Paris} contribuant à hauteur de $27,86\%$. Les deux autres villes sont \emph{Saint-Denis} (7,53\%) et \emph{Marseille} (5,06\%). Dans une moindre mesure, \emph{Gap} (3,31\%) et \emph{Cholet} (3,09\%) participent au positionnement de cet axe.
 
 \item[$\bullet$] \textbf{Originalité COS2}
 
-Aucune ville ne semble être majoritairement décrite par cet axe 3. Toutefois on peut remarquer un fait notable. Nous avions dit que Paris, bien que contributeur de l'axe 1, ne voyait pas son originalité y être décrite. Paris se trouve être plus original selon cet axe 3 (0,35) auquel il participe grandement à sa construction. Les villes contributrices tirent une part de leur originalité de cet axe : \emph{Marseille} (0,29),  \emph{Cholet} (0,28) \emph{Saint-Denis} (0,26) et Gap (0,22).
-
-Enfin \emph{La-Roche-Sur-Yon} a un COS2 égale à 0,31.
+Aucune ville ne semble être majoritairement décrite par cet axe 3. Toutefois on peut remarquer un fait notable. Nous avions dit que Paris, bien que contributeur de l'axe 1, ne voyait pas son originalité y être décrite. Paris se trouve être plus original selon cet axe 3 (0,35) auquel il participe grandement à la construction. Les villes contributrices tirent toutefois une part relativement faible de leur originalité sur cet axe : \emph{Marseille} (0,29),  \emph{Cholet} (0,28) \emph{Saint-Denis} (0,26) et \emph{Gap} (0,22).
 \end{itemize}
 
-En superposant les plans où se trouvent l'axe 3, on remarque évidemment que les variables contributives à sa construction la position de Paris ne sont pas étrangères. La direction et la même et cela est du au fait que Paris a une contribution majeure à cet axe. Elle en tire d'ailleurs son originalité principale. Cet axe semble être celui des marqueurs culturels. 
+En superposant les plans où se trouvent l'axe 3, on remarque évidemment que les variables contributives à sa construction et la position de \emph{Paris} ne sont pas étrangères. La direction est la même découlant du fait que Paris a une contribution majeure à cet axe. Elle en tire d'ailleurs son originalité principale. Cet axe semble être celui des marqueurs culturels. 
+
+\newpage
 
 \subsection{Conclusion}
 
-On retrouve dans cet ACP, les résultats obtenus dans le TP2 où le dendogramme donnait une impression visuelle de former 3 classes : 
+On retrouve dans cette ACP les résultats obtenus dans le TP2 où le dendogramme donnait une impression visuelle de former 3 classes en coupant au-dessus de 35 :  
 
-\centerline{\includegraphics[width=0.5\linewidth]{images/Dendo}} 
+\centerline{\includegraphics[width=\linewidth]{images/Dendo}} 
 
 On retrouve dans cette ACP, 3 axes principaux : 
 \begin{itemize}
-\item[$\bullet$] \textbf{Axe 1 :} axe à dominante économique avec de gros contributeurs se caractérisant par une position géographique bien particulière : l'Ouest parisien. 
+\item[$\bullet$] \textbf{Axe 1 :} axe à dominante économique avec un individu singulier \emph{Neuilly-Sur-Seine} et plusieurs gros contributeurs se caractérisant par une position géographique bien particulière : l'Ouest parisien. 
 \item[$\bullet$]  \textbf{Axe 2 :} celui-ci oppose le Sud ensoleillé et chaud au Nord pluvieux dont certaines variables au caractère plus morbide sont contributrices. 
-\item[$\bullet$] \textbf{Axe 3 :} Cette fois ci c'est la culture qui se distingue mais la culture parisienne. En effet, il s'agit d'un contributeur majeur isolé à sa fabrication.  
+\item[$\bullet$] \textbf{Axe 3 :} c'est la culture qui se distingue mais la culture parisienne. En effet, il s'agit d'un contributeur atypique à sa fabrication.  
 \end{itemize}
+
+\newpage
 
 \section{ACP de rang sur l'ensemble des variables}
 
@@ -252,7 +256,7 @@ Après avoir obtenu la matrice des rangs, nous lançons l'ACP avec Factoshiny.
 	
 Nous nous intéressons, comme pour l'ACP normée, aux valeurs propres dont voici le graphique :
 	
-\centerline{\includegraphics[width=0.8\linewidth]{images/ACPR_vp}}
+\centerline{\includegraphics[width=\linewidth]{images/ACPR_vp}}
 
 et le tableau de valeurs :
 
@@ -278,7 +282,7 @@ On a un décrochement entre la 4-ème et la 5-ème valeur ce qui nous pousse à 
 
 {\large \textbf{Plan (1,2)}}
 
-Côte à côte voici les graphiques des individus et celui des variables avec les 25 plus gros contributeurs pour les individus et les 10 plus gros contributeurs pour les variables : 
+Côte à côte voici les graphiques des individus et celui des variables avec les 25 plus gros contributeurs pour les individus et les 10 plus importantes pour les variables : 
 
 \centerline{\begin{tabular}{ccc}
 \includegraphics[width=0.55\linewidth]{images/ACPR_ind_12} & 
@@ -286,7 +290,7 @@ Côte à côte voici les graphiques des individus et celui des variables avec le
 \includegraphics[width=0.40\linewidth]{images/ACPR_var_12}
 \end{tabular}}
 
-On retrouve le même faisceau des variables de richesse que sur l'ACP normée, auxquelles viennent se rajouter \emph{AtiranceActifs} et \emph{AttiranceGlobale}. Ces variables sont à mettre en opposition à la variable chômage qui décrit plus la pauvreté. Dans la même direction se trouvent les villes trouvées lors de l'ACP normée, celle de l'Ouest parisien. Des villes réputées riches comme \emph{Lyon}, \emph{Annecy} ou bien \emph{Aix-en-Provence} viennent compléter la liste.
+On retrouve le même faisceau des variables de richesse que sur l'ACP normée, auxquelles viennent se rajouter \emph{AttiranceActifs} et \emph{AttiranceGlobale}. Ces variables sont à mettre en opposition à la variable \emph{Chomage} qui décrit davantage la pauvreté. Dans la même direction se trouvent les villes trouvées lors de l'ACP normée : celle de l'Ouest parisien. Des villes attirantes comme \emph{Lyon}, \emph{Annecy} ou bien \emph{Aix-en-Provence} viennent compléter la liste. \\
 
 
 \textbf{Tableau des variables les plus contributrices pour l'axe 1 :}
@@ -323,11 +327,11 @@ Sète & $-5.81$  & $3.71$ & 0.41 & $0.44$ & $3.33$ & $5.51$ & Paris\\
 \end{tabular} 
 \end{center}
 
-Sur cet axe 1, il y a plusieurs points contributifs, mais peu sont illustratifs car seuls les COS2 de \emph{ImpotRevenu} et \emph{Imposables} sont importants.
+Sur cet axe 1, il y a plusieurs variables contributives, mais peu sont illustratives car seuls les COS2 de \emph{ImpotRevenu} et \emph{Imposables} sont importants. Enfin, il est important de noter que Neuilly-Sur-Seine a perdu sa singularité et contribue beaucoup plus faiblement au positionnement de l'axe 1.
 
 \bigskip
 
-L'axe 2 met en opposition des villes du Sud et du Nord avec deux groupes bien distincts. Ceci correspond à une opposition entre les variables \emph{Température}, \emph{Soleil} et les variables \emph{MortaliteAlcool} et \emph{MortaliteGlobale}. Ceci est clairement visible sur les deux tableaux suivants :
+L'axe 2 met en opposition des villes du Sud et du Nord avec deux groupes bien distincts. Ceci correspond à une opposition entre les variables \emph{Température}, \emph{Soleil} et les variables \emph{MortaliteAlcool} et \emph{MortaliteGlobale}. C'est clairement visible sur les deux tableaux suivants : \\
 
 \textbf{Tableau des variables les plus contributrices pour l'axe 2 :}
 \begin{center}
@@ -372,7 +376,7 @@ Antibes & $-4.94$ & $4.18$ & $0.33$ & $0.52$ & $5.64$ & $5.74$ & Lille \\
 \includegraphics[width=0.40\linewidth]{images/ACPR_var_34}
 \end{tabular}}
 
-En observant ces deux graphiques, il ressort que les variables les mieux représentées pour l'axe 3 sur le plan sont \emph{Musées}, \emph{MonumHistoriques}, \emph{Criminalité} et \emph{RestauDistingue}. Ces variables sont corrélées négativement à \emph{LogtSup4Pieces}. En regardant de plus près les individus contributeurs, on trouve des grandes villes françaises à droite qui font la part belle à la culture mais où la criminalité est importante. Par criminalité, il faut entendre le nombre d'infractions et délits commis. Les infractions relatives au code de la route y sont forts nombreuses dans les grandes villes.
+En observant ces deux graphiques, il ressort que les variables les mieux représentées pour l'axe 3 sur le plan sont \emph{Musées}, \emph{MonumHistoriques}, \emph{Criminalité} et \emph{RestauDistingue}. Ces variables sont corrélées négativement à \emph{LogtSup4Pieces}. En regardant de plus près les individus contributeurs, on trouve des grandes villes françaises à droite qui font la part belle à la culture mais où la criminalité est importante. Par criminalité, il faut entendre le nombre d'infractions et délits commis. Les infractions relatives au code de la route y sont forts nombreuses dans les grandes villes.\\
 
 \textbf{Tableau des variables les plus contributrices pour l'axe 3 :}
 \begin{center}
@@ -410,7 +414,7 @@ Gap & $-4.83$ & $5$ & $0.33$ & $0.44$ & $5.98$ & $5.28$ & Marseille\\
 \end{tabular} 
 \end{center}
 
-La principale différence avec l'ACP normée c'est que l'on ne retrouve pas Paris sur cet axe alors qu'il en était le principal contributeur précédemment. Le fait de faire une ACP de rang à éliminer une grande partie de la singularité de Paris et les variables culturelles qui la décrivait. Ici les COS2 sont plutôt faibles et l'originalité des villes est partiellement mis en évidence ici.
+La principale différence avec l'ACP normée est que l'on ne retrouve pas Paris sur cet axe alors qu'il en était le principal contributeur précédemment. Le fait de faire une ACP de rang à éliminer une grande partie de la singularité de Paris et les variables culturelles qui la décrivait. Ici les COS2 sont plutôt faibles et l'originalité des villes est partiellement mis en évidence ici.
 
 \bigskip
 
@@ -422,17 +426,16 @@ Ces trois variables semblent décrire des variables liées à une population de 
 
 \subsection{Conclusion}
 
-Cette ACP de rang a permis de dégager d'autres résultats. En effet sur l'axe 1, Neuilly-Sur-Seine était un individu très singulier de part sa contribution disproportionné. L'ACP de rang a permis de gommer cette singularité. De même, l'axe 3 s'est trouvé modifier car la contribution de Paris a été amoindri permettant de faire émerger d'autres villes où la culture était bien présente. 
+Cette ACP de rang a permis de dégager d'autres résultats. En effet sur l'axe 1 de l'ACP normée, \emph{Neuilly-Sur-Seine} était un individu très singulier de part sa contribution disproportionnée. L'ACP de rang a permis de gommer cette singularité. De même, l'axe 3 s'est trouvé modifier car la contribution de Paris a été amoindrie permettant de faire émerger d'autres villes où la culture est bien présente. 
 
 
-\section{ACP normé pour les différents thèmes}
+\section{ACP normée pour les différents thèmes}
 
 \subsection{Thème Economie} 
 Voici le graphique des valeurs propres :
 
 \centerline{\includegraphics[width=0.8\linewidth]{images/VP1}}
-n'ayant de décrochement claire qu'aprés la 4em valeur propre,
-On se restreindra a 2 axes qui permettrons d'explorer 40,25\% de la variance totale pour le theme economie,
+N'ayant de décrochement clair qu'après la 4-ème valeur propre, on se restreindra à 2 axes qui permettrons d'explorer 40,25\% de la variance totale pour le thème économie.
 
 \centerline{\begin{tabular}{ccc}
 \includegraphics[width=0.55\linewidth]{images/I_1_0,85} &
@@ -440,9 +443,9 @@ On se restreindra a 2 axes qui permettrons d'explorer 40,25\% de la variance tot
 \includegraphics[width=0.40\linewidth]{images/V_1_0,85}
 \end{tabular}}
 
-Se limiter aux individus et variable les mieux représenté dans un premier temps \emph(cos2>0,85)\%
-dégage un premier cluster "SalaireAnnuel", "ImpotRevenu", "ImpotFortune","MetreCarreAncien" portée par les villes de l'ouest parisien.\\
-Ce plan est alors fortement déterminer par les indicateur du niveau de richesse de ces villes, c'est concidération qui nous sert de levier d'interprétation la suite :
+Se limiter aux individus et variables les mieux représentés dans un premier temps (COS2 $>$ 0,85), dégage un premier cluster \emph{SalaireAnnuel}, \emph{ImpotRevenu}, \emph{ImpotFortune}, \emph{MetreCarreAncien} porté par les villes de l'Ouest parisien.\\
+
+Ce plan est alors fortement déterminé par les indicateurs du niveau de richesse de ces villes. Cette considération nous sert de levier d'interprétation pour la suite :
 
 \centerline{\begin{tabular}{ccc}
 \includegraphics[width=0.55\linewidth]{images/I_1_0,6} &
@@ -450,17 +453,20 @@ Ce plan est alors fortement déterminer par les indicateur du niveau de richesse
 \includegraphics[width=0.40\linewidth]{images/V_1_0,6}
 \end{tabular}}
 
-En étant plus tolérant \emph(cos2>0,6)\% : un deuxieme cluster  "AttiranceGlobale", "AttiranceActifs" se détaches, et deux nouveau groupes s'opposant apparaissent :\\
-D'une part : Lyon,Nancy,Melun et Rouen, qui on permis la détermination de ce cluster par leur point commun (une fort valeur d'attirance Global et Actif) mais surtout leur différences communes : elles sont toutes loins derriere l'ouest parisien en niveau de richesse.\\
-Notons que dans le tableau de donnée brut, le top 10 dans ces 2 catégorie est présque partager entre ce groupes et l'ouest parisien, ce qui renforce l'idée c'est cette grande différence qui a permis l'émergeance de se second groupement.\\
-D'autre part : LeHavre, Arles Beziers, qui forme un groupe antagoniste au deux précédent (ces trois villes étant dans le bas du classement dans la plus part des indicateur en richesse et attirance)\\
+En étant plus tolérant (COS2 $> 0,6$) : un second cluster  \emph{AttiranceGlobale}, \emph{AttiranceActifs} se détache, et deux nouveaux groupes s'opposant apparaissent :
+\begin{itemize}
+\item[$\bullet$] \emph{Lyon}, \emph{Nancy}, \emph{Melun} et \emph{Rouen}, qui ont permis la détermination de ce cluster par leur point commun : une forte valeur sur les  variables \emph{AttiranceGloale} et \emph{AttiranceAtif}. Leur différence commune est qu'elles sont toutes loin derrière l'Ouest parisien en niveau de richesse.\\ 
+Notons que dans le tableau de données brutes, le top 10 dans ces 2 catégories est presque partagé entre ce groupe et l'Ouest parisien. Ceci renforce l'idée que c'est cette grande différence sur l'attirance de ces villes qui a permis l'émergence de ce second groupement.
 
-L'émergence de ce dernier groupe éclaire et améliore nos premiers traveau sur ce jeux de donnée :\\
-On retrouve l'intuition de notre premiere interprétation des 3 classes obtenue (lors du TP2) par la CAH du theme, la riche region parisienne occupé déja ça propre classe (3) et
-Lyon,Nancy,Melun et Rouen étaient bien dans la même classe des "villes relativement attractive"(1)\\
+\item[$\bullet$] \emph{Le Havre}, \emph{Arles}, \emph{Béziers} forment un groupe antagoniste aux deux précédents. Ces trois villes sont dans le bas du classement dans la plupart des indicateurs en matière de richesse et d'attirance.
 
-Mais avec une meilleur comprehention ici entre ce qui fait les point communs de la classe 1 et 3 (une haute attirance Global/Actif)
-et ce qui fait de la classe 2 (dont LeHavre, Arles, Beziers font paris) une classe si différentes des deux autres : sont faible niveau de richesse ET faible attirance Global/Actif\\
+L'apparition de ce dernier groupe éclaire et améliore nos premiers travaux sur ce jeu de données. On retrouve l'intuition de notre première interprétation des 3 classes obtenues lors du TP2 par la CAH du thème \emph{Economie}. La riche région parisienne formait déjà une classe à part entière (classe 3). \emph{Lyon}, \emph{Nancy}, \emph{Melun} et \emph{Rouen}
+ étaient bien dans la même classe des "villes relativement attractives" (classe 1).
+\end{itemize}
+
+Finalement, nous obtenons une meilleure compréhension entre ce qui fait les points communs de la classe 1 et 3 (une certaine part de richesse et une haute attirance Global/Actif) et ce qui fait de la classe 2 (dont \emph{Le Havre}, \emph{Arles}, \emph{Béziers} font partis) une classe si différentes des deux autres : son faible niveau de richesse et une faible attirance globale ou des actifs.
+
+\newpage
 
 \subsection{Thème Risques}
 
@@ -482,11 +488,11 @@ On constate un décrochement entre la 3-ème et la 4-ème valeur propre. De plus
 
 Voici les graphiques des individus avec les 10 plus gros contributeurs et celui des variables où sont indiquées les 8 variables les plus contributrices.
 
-Du côté des variables, se dessinent deux faisceaux avec des thèmes propres. Un premier faisceau, qui nous parlent de mortalité : \emph{MortaliteGlobale} (CTR : 22,39\%), \emph{MortaliteAlcool} (14,92\%), \emph{MortaliteCancerPoumon} (13,95\%) et \emph{DecesInfarctus} (13,71\%). \emph{MortaliteGlobale} a d'ailleurs un COS2 assez élevé sur la première dimension : 0,74. Cette variable est donc assez bien corrélée avec la composante 1.\\
+Du côté des variables, se dessinent deux faisceaux avec des thèmes propres. Un premier faisceau, qui nous parle de mortalité : \emph{MortaliteGlobale} (CTR : 22,39\%), \emph{MortaliteAlcool} (14,92\%), \emph{MortaliteCancerPoumon} (13,95\%) et \emph{DecesInfarctus} (13,71\%). \emph{MortaliteGlobale} a d'ailleurs un COS2 assez élevé sur la première dimension : 0,74. Cette variable est donc assez bien corrélée avec la composante 1.\\
 
-Trois villes  pointent de la même région pointent dans la même direction que les 4 variables précédemment citée : Lille (CTR : 8,30\% ;  COS2 : 0,67), Valenciennes (CTR1 : 4,79\% ; COS2 : 0,43) et Dunkerque (CTR1 : 3,97 ; COS2 : 0,41). Une autre ville est très contributrice au positionnement de l'axe 1, mais pointe dans la direction opposée : \emph{Neuilly-Sur-Seine} (CTR1 : 11,08\%). \\
+Trois villes de la même région pointent dans la même direction que les 4 variables précédemment citées : \emph{Lille} (CTR : 8,30\% ;  COS2 : 0,67), \emph{Valenciennes} (CTR1 : 4,79\% ; COS2 : 0,43) et \emph{Dunkerque} (CTR1 : 3,97 ; COS2 : 0,41). Une autre ville est très contributrice au positionnement de l'axe 1, mais pointe dans la direction opposée : \emph{Neuilly-Sur-Seine} (CTR1 : 11,08\%). \\
 
-Neuilly-Sur-Seine est aussi opposée au second faisceau de variables qui nous parle davantage de retard scolaire. Ces variables sont très contributrices au positionnement de l'axe 2. Il paraît malheureusement logique que ce retard scolaire dès la 6-ème (CTR2 : 19,21\%), soit perpétué en 3-ème (CTR2 : 15,85\%\%) puis en terminale (CTR2 : 7,15\%). La variables \emph{Ciminalite} participe aussi très fortement au positionnement de l'axe 2 avec une contribution de 15,78\%. Malgré de fortes contributions, l'étude des COS2 ne montre rien de très significatif \\
+Neuilly-Sur-Seine est aussi opposée au second faisceau de variables qui nous parle davantage de retard scolaire. Ces variables sont très contributrices au positionnement de l'axe 2. Il paraît malheureusement logique que ce retard scolaire dès la 6-ème (CTR2 : 19,21\%), soit perpétué en 3-ème (CTR2 : 15,85\%\%) puis en terminale (CTR2 : 7,15\%). La variable \emph{Criminalite} participe aussi très fortement au positionnement de l'axe 2 avec une contribution de 15,78\%. Malgré de fortes contributions, l'étude des COS2 ne montre rien de très significatif. \\
 
 Du côté des individus, Avignon tire une bonne partie son originalité de cet axe avec un COS2 égale à 0,67. Elle pointe malheureusement dans la même direction que la criminalité et le retard scolaire.
 
@@ -504,11 +510,11 @@ Sur ce plan, on distingue clairement un regroupement de plusieurs grandes villes
 
 On retrouve parmi les variables les plus contributrices pointant dans la direction de ces villes : \emph{TerrainPollue} (CTR3 : 20,71\%), \emph{Inondations} (CTR3 : 17,50\%) et \emph{UsinesRisques : 11,45\%}. Toutefois il n'y pas de forte corrélation entre ces variables et l'axe 3, leur COS2 étant assez faible.
 
-\bigskip
+\newpage
 
 \subsection{Thème Culture}
 
-On se restreindra a 2 axes qui permettrons d'explorer 63.80\% de la variance totale pour le theme culture
+On se restreindra à 2 axes qui permettrons d'explorer 63.80\% de la variance totale pour le thème \emph{Culture}
 
 \centerline{\includegraphics[width=0.5\linewidth]{images/VP3}}
 
@@ -520,13 +526,15 @@ On se restreindra a 2 axes qui permettrons d'explorer 63.80\% de la variance tot
 \includegraphics[width=0.30\linewidth]{images/V_3_0,9}
 \end{tabular}}
 
-Dans cette premiere ACP du theme culuture, la place énorme qu'occupe Paris dans la détermination du plan permet difficilement d'etudier l'etalement verticale qui se dessine en élargissant notre tolérance a \emph(cos2>0,5)\% :\\
+Dans cette première ACP du thème \emph{Culture}, la place énorme qu'occupe Paris dans la détermination du plan permet difficilement d'étudier l'étalement vertical qui se dessine en élargissant notre tolérance à (COS2 $> 0,5$) :
+
 \centerline{\begin{tabular}{ccc}
 \includegraphics[width=0.55\linewidth]{images/I_3_0,5} &
 &
 \includegraphics[width=0.30\linewidth]{images/V_3_0,5}
 \end{tabular}}
-Qui pourra étre mieux explorer dans l'ACP par rang.
+
+Cela pourra être mieux exploré dans l'ACP par rang qui gommera la singularité de Paris.
 
 	\subsection{Thème Nature}
 	
@@ -544,23 +552,24 @@ Sur ce thème nous ne regarderons que les deux premiers axes. En effet ils captu
 \includegraphics[width=0.40\linewidth]{images/ACP_nat_var_12}
 \end{tabular}}
 
-Ici l'étude est assez simple. On remarque 3 variables qui ont positionnées l'axe 1 : \emph{Soleil} (CTR : 31,33\%), \emph{Temperature} (CTR : 30,00\%) et \emph{Pluie} (CTR : 27,09\%). La variable \emph{Pluie} est logiquement anti-corrélée aux deux autres. Ces trois variables sont très corrélées avec cet axe. Leur COS2 est respectivement de 0,91 ; 0,87 et 0,78.\\
+Ici l'étude est assez simple. On remarque 3 variables qui ont positionnées l'axe 1 : \emph{Soleil} (CTR : 31,33\%), \emph{Temperature} (CTR : 30,00\%) et \emph{Pluie} (CTR : 27,09\%). La variable \emph{Pluie} est logiquement négativement corrélée aux deux autres. Ces trois variables sont très corrélées avec cet axe. Leur COS2 est respectivement de 0,91 ; 0,87 et 0,78.\\
 
-Sur le plan des individus, on voit un grand groupe de villes du Sud de la France dans la même direction que les variables \emph{Soleil} et \emph{Température}. On peut citer par exemple : \emph{Toulon} (CTR1 : 7\% ; COS2 : 0,96), \emph{Marseille} (CTR1 : 5,90 ; COS2 : 0,92), \emph{Antibes} (CTR1 : 5,86\% ; COS2 : 0,88) et\emph{Nice} (CTR1 : 5,55\% ; COS2 : 0,89). Pour ces villes citées et celles du groupe, l'originalité visible sur cet axe représente quasiment la totalité.\\
+Sur le plan des individus, on voit un grand groupe de villes du Sud de la France dans la même direction que les variables \emph{Soleil} et \emph{Température}. On peut citer par exemple : \emph{Toulon} (CTR1 : 7\% ; COS2 : 0,96), \emph{Marseille} (CTR1 : 5,90 ; COS2 : 0,92), \emph{Antibes} (CTR1 : 5,86\% ; COS2 : 0,88) et\emph{Nice} (CTR1 : 5,55\% ; COS2 : 0,89). Pour ces villes citées et celles du groupe des villes du Sud, l'originalité visible sur cet axe représente quasiment la totalité.\\
 
 Pour l'axe 2, les variables \emph{Ski} (CTR2 : 41,47\% ; COS2 : 0,64) et \emph{MarcheAPied} (CTR2 : 40,11\% ; COS2 : 0,62) ont clairement positionné notre axe même si leur corrélation avec cet axe n'est pas si grande. \\
 
-\emph{Gap} (CTR2 : 5,14\% ; COS2 : 0,76), \emph{Vichy} (CTR2 : 4,31\% , COS2 : 0,82), \emph{Annecy} (CTR2 : 4,08\% , COS2 : 0,74) et \emph{Nancy} (CTR2 : 4,00\%, COS2 : 0,60) ont contribué à positionné l'axe qui parle d'elles. Ces villes n'ont pas tout à fait le même profil, car si Gap et Annecy sont, de part leur positionnement géographiques, des villes tournées vers le ski, il n'en ai clairement pas question pour Vichy et Nancy où la variable \emph{MarcheAPied} a du jouer un rôle important.
+\emph{Gap} (CTR2 : 5,14\% ; COS2 : 0,76), \emph{Vichy} (CTR2 : 4,31\% , COS2 : 0,82), \emph{Annecy} (CTR2 : 4,08\% , COS2 : 0,74) et \emph{Nancy} (CTR2 : 4,00\%, COS2 : 0,60) ont contribué à positionner l'axe qui parle d'elles. Ces villes n'ont pas tout à fait le même profil, car si Gap et Annecy sont, de part leur positionnement géographique, des villes tournées vers le ski, il n'en est clairement pas question pour Vichy et Nancy où la variable \emph{MarcheAPied} a du jouer un rôle important.
 
 \section{ACP de rang pour les différents thèmes}
+
 \subsection{Thème Economie}
 
 On se restreindra encore a 2 axes ici:
 
-\centerline{\includegraphics[width=0.5\linewidth]{images/VP2}}
+\centerline{\includegraphics[width=0.8\linewidth]{images/VP2}}
 
-Une ACP de rang pour ce theme permet une analyse plus fine, en réduisant drastiquement l'impact des individus trés attypiques, on peut désormais observer d'autres disparité.\\
-En se limitant a \emph  COS2>0,5 \%, on peur désormais mieux éxplorer la structures des villes a faible richesse et attirance observer dans l'ACP normée:
+Une ACP de rang pour ce thème permet une analyse plus fine, en réduisant drastiquement l'impact des individus très atypiques, on peut désormais observer d'autres disparités.\\
+En se limitant à COS2 $>0,5$, on peut désormais mieux explorer la structure des villes à faible richesse et attirance observées dans l'ACP normée :
 
 \centerline{\begin{tabular}{ccc}
 \includegraphics[width=0.6\linewidth]{images/I_2_0,5} &
@@ -569,14 +578,11 @@ En se limitant a \emph  COS2>0,5 \%, on peur désormais mieux éxplorer la struc
 \end{tabular}}
 
 
-Une premiére partie dans le cadran inferrieur gauche (montauban,cholet,gap...) des villes a haut emplois communal et grand nombre de large habitat (logtsup4piece),et où l'opposition au grandes métropoles se fait moins par leur niveau de richesse que par leur faible capacité a attiré de nouveau habitant.\\
-On y retrouve d'ailleur les villes en bordure de zones rurales et d'ancien bassin ouvrier, nous confortant dans cette interprétation.\\
+Dans le cadran inférieur gauche, on trouve des   villes au haut taux d'emploi communal et avec un grand nombre de larges habitats (\emph{LogtSup4Piece}). Parmi ces villes, on peut citer : \emph{Montauban}, \emph{Cholet} et  \emph{Gap}. L'opposition aux grandes métropoles se fait moins par leur niveau de richesse que par leur faible capacité à attirer de nouveaux habitants. On y retrouve d'ailleurs les villes en bordure de zones rurales et d'anciens bassins ouvriers, nous confortant ainsi dans cette interprétation.\\
 
-Une deuxieme partie dans le cadran superrieur droit (bezier, perpignon avigon...) des villes a haut taux de chomage et chomage long, et où désormais l'opposition au grandes métropoles se fait moins par leur capacité à attiré de nouveau habitant que par leur faible niveau de richesse.\\
+Dans le cadran supérieur gauche se trouvent par exemple : \emph{Béziers}, \emph{Perpignan} \emph{Avignon}. Les villes de ce cadran ont un haut taux de chômage et de chômage long. Leur opposition aux grandes métropoles se fait moins par leur capacité à attirer de nouveaux habitants que par leur faible niveau de richesse. On retrouve aussi des villes du littoral, touristique, avec une forte affluence de retraités, nous confortant dans cette interprétation.\\
 
-On y retrouve les villes du litoralles, touristique, avec beaucoup d'affluance de retraité, nous confortant dans cette interprétation.\\
-
-Bien que ces différence soit beaucoup moins trancher que pour l'ACP normé, elle suggère de nouvelles dynamiques qui n'étaient pas mis en évidence lorsque la riche region parisenne polariser autant les axes.
+Bien que ces différences soit beaucoup moins tranchées que pour l'ACP normée, elle suggère de nouvelles dynamiques qui n'y étaient pas mises en évidence lorsque la riche région parisienne polarisait autant les axes.
 
 \subsection{Thème Risques}
 
@@ -584,7 +590,7 @@ Bien que ces différence soit beaucoup moins trancher que pour l'ACP normé, ell
 
 Il n'y pas de changement notable dans l'étude des valeurs propres. On observe le même décrochement entre la 3-ème et la 4-ème valeur.\\
 
-L'étude des plans (1,2) et (2,3) dont les graphiques se trouvent ci-dessous ne nous montre rien de plus. En effet on retrouve les mêmes faisceaux de variables avec peu ou proue les mêmes villes. Ceci s'explique par le fait qu'il n'y avait pas d'individu singulier par rapport aux variables du thème.
+L'étude des plans (1,2) et (2,3) dont les graphiques se trouvent ci-dessous ne nous montrent rien de plus. En effet, on retrouve les mêmes faisceaux de variables avec peu ou proue les mêmes villes. Ceci s'explique par le fait qu'il n'y avait pas d'individu singulier par rapport aux variables du thème.
 
 \centerline{\begin{tabular}{ccc}
 \includegraphics[width=0.55\linewidth]{images/ACPR_ris_ind_12} & 
@@ -598,9 +604,11 @@ L'étude des plans (1,2) et (2,3) dont les graphiques se trouvent ci-dessous ne 
 \includegraphics[width=0.40\linewidth]{images/ACPR_ris_var_23}
 \end{tabular}}
 
+\newpage
+
 \subsection{Thème Culture}
 
-Ici, l'acp par rang nous permet, toujours avec 2 axes, de bien mieux observer les disparité entre les villes:
+Ici, l'ACP par rang nous permet, toujours avec 2 axes, de bien mieux observer les disparités entre les villes :
 
 
 \centerline{\includegraphics[width=0.8\linewidth]{images/VP4}}
@@ -611,23 +619,57 @@ Ici, l'acp par rang nous permet, toujours avec 2 axes, de bien mieux observer le
 \includegraphics[width=0.3\linewidth]{images/V_4_0,8}
 \end{tabular}}
 
-En se limitant a \emph(cos2>0,9)\%, on peut désormé mieux comprendre l'étallement des groupe de villes déterminant la position des variables presse et etudiants :\\
-En effet, on découvre alors que les villes (hors paris) ayant de haute valeur pour presse sont majoritairement les villes acceuillant de grands évènement culturel,(canne,angouleme...), villes ne disposant souvent pas des grande infrastructure (grandes écoles, université) pour attiré les millieux etudiants.
+En se limitant à COS2 $>0,9$, on peut désormais mieux comprendre l'étalement des groupes de villes déterminant la position des variables \emph{Presse} et \emph{Etudiants}.\\
+En effet, on découvre alors que les villes hors Paris ayant de hautes valeurs pour \emph{Presse}, sont majoritairement les villes accueillant de grands évènements culturels,( \emph{Cannes}, \emph{Angoulème}...), villes ne disposant souvent pas des grandes infrastructures pour attirer les milieux étudiants (grandes écoles, université). On remarque de plus que la majorité des variables et des grandes villes françaises sont globalement orientées dans la même direction. 
 
 
 \subsection{Thème Nature}
 
 \centerline{\includegraphics[width=0.8\linewidth]{images/ACPR_nat_vp}}
 
-Bien que l'inertie capturé par les deux premiers axes soit inférieur à celles obtenue lors de l'ACP normée, nous ne garderons de nouveaux que deux axes. Ils capturent 67,49\% de la variance.\\
+Bien que l'inertie capturée par les deux premiers axes soit inférieure à celles obtenue lors de l'ACP normée, nous ne garderons de nouveaux que deux axes. Ils capturent 67,49\% de l'inertie.\\
 
-Certes quelques différences de valeurs apparaissent mais on retrouve sensiblement les mêmes résultats que lors de l'ACP normée, notamment le groupe des villes du Sud et le positionnement opposé sur l'axe deux pour d'un côté des villes typées montagne (Annecy, Gap, Chambéry, Clermont-Ferrand) et de l'autre deux villes de bord de mer (Dunkerque, Quimper, Saint-Nazaire).
+Certes quelques différences de valeurs apparaissent mais on retrouve sensiblement les mêmes résultats que lors de l'ACP normée, notamment le groupe des villes du Sud et le positionnement opposé sur l'axe 2 pour d'un côté des villes typées montagne (Annecy, Gap, Chambéry, Clermont-Ferrand) et de l'autre trois villes de bord de mer (Dunkerque, Quimper, Saint-Nazaire).
 
 \centerline{\begin{tabular}{ccc}
 \includegraphics[width=0.55\linewidth]{images/ACPR_nat_ind_12} & 
 &
 \includegraphics[width=0.40\linewidth]{images/ACPR_nat_var_12}
 \end{tabular}}
+
+\newpage
+
+\appendix
+
+\section{Code R}
+
+\begin{lstlisting}[language=R]
+
+library(Factoshiny)
+library(FactoMineR)
+
+villesbrut = read.table("~/ADM/ADM-TP1/TP3/villes.csv", header = TRUE, row.names=1)
+
+villes_rang = apply(villesbrut, MARGIN = 2 , FUN = rank)
+
+villes_eco = villesbrut[,c('Chomage', "ChomageJeunes", "ChomageLong", "EvoluEmploiCree", "Activite", "EmploiFeminin",
+                       "EmploiCommune", "DefaillEntreprise", "SalaireAnnuel", "ImpotRevenu", "ImpotFortune", "Imposables",
+                       "MetreCarreAncien", "TaxeHabitation", "FoncierBati", "MetreCubeEau", "EvolDemographique", "Vieillissement",
+                       "AttiranceGlobale", "AttiranceActifs", "Proprietaires", "LogtSup4pieces", "LogtInsalubre", "LogtVacant",
+                       "LogtConstruction")]
+
+villes_ris = villesbrut[,c('Criminalite', 'EvolutionCrimes', 'SecuriteRoutiere', 'Inondations', 'TerrainsPollues', 'UsinesRisques',
+                           'MortaliteInfantile', 'MortaliteCancerPoumon', 'MortaliteAlcool', 'DecesInfarctus', 'TauxSuicide',
+                           'MortaliteGlobale', 'TailleClassesPrimaires', 'Retard6eme', 'Retard3eme', 'RetardTerminale')]
+
+villes_nat = villesbrut[ , c('Mer', 'Ski', 'Soleil', 'Pluie', 'Temperature', 'MarcheAPied')]
+
+villes_nat_rang = apply(villes_nat, MARGIN = 2 , FUN = rank)
+
+acp_nat_rang = Factoshiny(villes_nat_rang)
+
+
+\end{lstlisting}
 
 
  

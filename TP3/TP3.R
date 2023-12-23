@@ -1,6 +1,6 @@
 library(Factoshiny)
 library(FactoMineR)
-#1)a) Chargement du dataframe
+
 villesbrut = read.table("~/ADM/ADM-TP1/TP3/villes.csv", header = TRUE, row.names=1)
 
 villes_rang = apply(villesbrut, MARGIN = 2 , FUN = rank)
